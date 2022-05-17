@@ -1,6 +1,7 @@
 
 import './App.css';
 import Curso from './components/Curso';
+import Navbar from './components/Navbar';
 
 // const Curso = (name, teacher, duration)
 
@@ -10,6 +11,8 @@ function App() {
   return (
     <div>
       <div className="App">
+      
+      <Navbar></Navbar>
       <h1>Cursos React</h1>
 
         {/* {curso } */}
