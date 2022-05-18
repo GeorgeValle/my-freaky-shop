@@ -1,24 +1,30 @@
 
 import './App.css';
-import Curso from './components/Curso';
-import Navbar from './components/Navbar';
+//import Curso from './components/Curso';
+import NavBar from './components/NavBar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemListContainer from './containers/ItemListContainer';
+
 
 // const Curso = (name, teacher, duration)
 
 
 
+// style={{color: 'red', fontSize: '50px'}}
 function App() {
   return (
     <div>
       <div className="App">
       
-      <Navbar></Navbar>
-      <h1>Cursos React</h1>
+      <NavBar></NavBar>
+      <ItemListContainer greeting="Futuro incrementador o lo que sea" >
+  </ItemListContainer>
+      {/* <h1>Cursos React</h1>
 
-        {/* {curso } */}
+        {curso } 
 
         <Curso name="React Js" teacher="Leo Messi" duration={7}/>
-        <Curso name="Javascript" teacher="Carlos Gardel" duration={7}/>
+        <Curso name="Javascript" teacher="Carlos Gardel" duration={7}/> */}
         
       </div>
     </div>

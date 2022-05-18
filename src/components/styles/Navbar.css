@@ -1,39 +1,4 @@
-
-.topNav{
-    background-color: #391d9e;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items:center
-
-}
-
-.logo-navbar{
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-.menu-list{
-    flex-direction: row;
-    justify-content: space-between;
+.list{
+    color: blue;
     align-items: center;
-    list-style:none
-}
-
-.item-list{
-    display: inline;
-    text-align: center;
-    margin-right: 2rem;
-}
-
-.buttons{
-    margin-right: 2rem;
-    
-}
-.btns{
-    padding-right: 1rem;
-    padding-left: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
 }
