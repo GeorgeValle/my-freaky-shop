@@ -1,34 +1,79 @@
-import './styles/Navbar.css';
+//import './styles/Navbar.css';
+import CartWidget from './CartWidget';
+import {Navbar, Nav, NavItem,NavLink, Button,NavbarBrand,NavbarText } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Navbar = () =>{
+const NavBar = () =>{
     return(
         <>
-        <div className="topNav">
-            <h2 className="logo-navbar"> My Freaky Shop</h2>
-            <div>
-                <ul className="menu-list">
-                    <li className="item-list">
-                        Categoria 1
-                    </li>
-                    <li className="item-list">
-                        Categoria 2
-                    </li>
-                    <li className="item-list">
-                        Categoria 3
-                    </li>
-                    <li className="item-list">
-                        Categoria 4
-                    </li>
-                </ul>
-            </div>
-            <div className="Buttons">
-                <button className="btns" type="button">Ingresar</button>
-                <button className="btns" type="button">Registrarse</button>
-            </div>
+        <div>
+        <Navbar
+        color="dark"
+        light
+
+        >
+            <NavbarBrand
             
+            href="/"
+            // className="me-2"
+
+            >
+                <NavbarText
+                className="logo">
+                My Freaky Shop
+                </NavbarText>
+            </NavbarBrand>
+        
+
+        
+        <Nav 
+        pills
+        
+        >
+
+            
+            
+                
+                    <NavLink
+                    active
+                    href="#"
+                        > 
+                        Categoria 1
+                    </NavLink>
+                    <NavLink href="#" >
+                        Categoria 2
+                    </NavLink>
+                    <NavLink href="#" >
+                        Categoria 3
+                    </NavLink>
+                    <NavLink href="#" >
+                        Categoria 4
+                    </NavLink>
+                
+            
+            <NavItem>
+                <CartWidget/>
+            </NavItem>
+            
+            <NavItem>
+                <Button
+                color="primary"
+                outline>
+                    Ingresar
+                </Button>
+                <Button
+                color="primary"
+                >
+                    Registrarse
+                </Button>
+            </NavItem>
+            
+        </Nav>
+       
+        </Navbar>
         </div>
         </>
     )
 }
 
-    export default Navbar;
+    export default NavBar;
