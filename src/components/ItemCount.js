@@ -7,10 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const ItemCount = ({stock})=>{
     // inicializamos la variable contador (el desafio pide que empiece en 1).
     const[counter, setCounter]=useState(1);
+    const[disabledM, setDisabledM]=useState(" ");
     //suma el use state
     
     const add=()=>{
-        counter<stock&&setCounter(counter+1);
+        counter<stock 
+        ?setCounter(counter+1)
+        :setDisabledM(disabledM='secondary');
     }
     //resta el use state
     const subtract=()=>{
@@ -20,10 +23,10 @@ const ItemCount = ({stock})=>{
     return(
         <>
     
-        <Button onClick={add} color="primary"><AiOutlinePlusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
+        <Button  onClick={add} color="primary"><AiOutlinePlusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
         <Badge><h7>{counter}</h7></Badge>
         <Button onClick={subtract} color="primary"><AiOutlineMinusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
-        <Button color="primary" outline >Agregar al carrito</Button>
+        <Button  {disabledM} outline >Agregar al carrito</Button>
     
 
         </>
