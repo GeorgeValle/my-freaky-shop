@@ -13,15 +13,18 @@ const ItemCount = ({stock})=>{
     
     const add=()=>{
         counter<stock 
-        ?setCounter(counter+1)
+        ?setCounter(counter+1,disabledMinus="primary"   )
         :setDisabledPlus(disabledPlus='secondary');
+        //counter>0&&setDisabledPlus(disabledPlus="primary");
+        setDisabledMinus(disabledMinus="primary");
     }
     //resta el use state
     const subtract=()=>{
         counter>0
-        ?setCounter(counter-1)
+        ?(setCounter(counter-1 ) )
         :setDisabledMinus(disabledMinus='secondary');
-        //counter>0&&setCounter(counter-1);
+        //counter>0&&setDisabledMinus(disabledMinus="primary");
+        setDisabledPlus(disabledPlus="primary");
     }
 
     return(
