@@ -1,16 +1,26 @@
 import react from 'react';
-import Item from './Item'
-import { CardGroup } from 'reactstrap';
+import Item from './Item';
+import { CardGroup,CardTitle } from 'reactstrap';
 
 const ItemList = ({productList}) => {
     return(
 
             <>
-            <h3>cat&#225;logo</h3>
+            <CardTitle
+            tag="h4"
+            color="dark"
+            inverse
+            >
+                
+            Cat&#225;logo
+            </CardTitle>
+
             <CardGroup>
-            {productList.map((product) =><Item key={product.id} product={product}/>)}
-            </CardGroup>
+                    {productList.map((product) =><Item key={product.id} product={product}/>)};
+            </CardGroup>    
             </>
+            
+            
 
     )
 }

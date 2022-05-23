@@ -1,9 +1,9 @@
 import React from 'react'
-import {Card,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg} from 'reactstrap'
-
+import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg} from 'reactstrap'
+import ItemCount from './ItemCount'
 const Item = ({product}) => {
     
-    const {img,price,name,description,stock}=product;
+    const {img,price,title,description,stock}=product;
 
     return (
     <>
@@ -12,31 +12,37 @@ const Item = ({product}) => {
         body
         color="dark"
         inverse
+        
     >
-    <CardBody>
+    
         <CardImg
-            alt={name}
-            src="https://picsum.photos/318/180"
+            alt={title}
+            src={img}
             top
             width="100%"
         />
+        <CardHeader>
         <CardTitle 
             tag="h5">
-            {name}
+            {title}
         </CardTitle>
+        </CardHeader>
+        <CardBody>
+        
         <CardSubtitle
             className="mb-2 text-muted"
             tag="h6"
         >
             ${price}
         </CardSubtitle>
+    
         <CardText>
             {description}
         </CardText>
-        <Button>
-            Button
-        </Button>
         </CardBody>
+        <CardFooter>
+        <ItemCount stock={stock}/>
+        </CardFooter>
     </Card>
 </div>
 

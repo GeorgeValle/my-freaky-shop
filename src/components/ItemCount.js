@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //El componente contador
 const ItemCount = ({stock})=>{
     // inicializamos la variable contador (el desafio pide que empiece en 1).
-    const[counter, setCounter]=useState(1);
+    const[counter, setCounter]=useState(0);
     let[disabledPlus, setDisabledPlus]=useState("primary");
     let[disabledMinus, setDisabledMinus]=useState("primary");
     //suma el use state
