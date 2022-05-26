@@ -10,7 +10,7 @@ const ItemDetail = ({product}) => {
         <>
         
 <Row>
-    <Col sm="6" md="8" lg="10">
+    <Col sm="10" md="8" lg="6">
         <Card 
         body
         color="dark"
@@ -30,7 +30,7 @@ const ItemDetail = ({product}) => {
         />
         </Card>
     </Col>
-    <Col sm="6" md="8" lg="10">
+    <Col sm="10" md="8" lg="6">
         <Card 
         body
         color="dark"
