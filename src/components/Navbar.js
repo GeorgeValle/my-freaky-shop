@@ -1,6 +1,6 @@
 //import './styles/Navbar.css';
 import CartWidget from './CartWidget';
-import {Navbar, Nav, NavItem,NavLink, Button,NavbarBrand,NavbarText } from 'reactstrap';
+import {Navbar, Nav, NavItem,NavLink, Button,NavbarBrand } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = () =>{
@@ -12,17 +12,16 @@ const NavBar = () =>{
         light
 
         >
-            <NavbarBrand
+            <NavLink
             
             href="/"
-            // className="me-2"
+            className="me-2 brand"
 
             >
-                <NavbarText
-                className="logo">
+                <h3>
                 My Freaky Shop
-                </NavbarText>
-            </NavbarBrand>
+                </h3>
+            </NavLink>
         
 
         
