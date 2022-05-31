@@ -1,36 +1,39 @@
 
 import './App.css';
-//import Curso from './components/Curso';
+
 import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './containers/ItemDetailContainer';
-// import ItemListContainer from './containers/ItemListContainer';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import ItemListContainer from './containers/ItemListContainer';
+//import Item from './components/Item';
 //import ItemCount from './components/ItemCount';
 
-// const Curso = (name, teacher, duration)
 
 
 
 // style={{color: 'red', fontSize: '50px'}}
 function App() {
+
   return (
-    <div>
-      <div className="App">
-      
+
+    <BrowserRouter>
       <NavBar></NavBar>
-      <ItemDetailContainer></ItemDetailContainer>
-      {/* <ItemListContainer greeting="Futuro incrementador o lo que sea" >
-      </ItemListContainer> */}
-  {/* <ItemCount stock={5} /> */}
-      {/* <h1>Cursos React</h1>
+      <Routes>
+        <Route path="/" element={<ItemListContainer></ItemListContainer>}/>
+        <Route path="/category/:id" element={<ItemListContainer/>}/>
+        <Route path="/item/:id" element={<ItemDetailContainer></ItemDetailContainer>}/>
+        {/* <Route path="/" element={<h1></h1>}/> */}
+      </Routes>
+    </BrowserRouter>
 
-        {curso } 
 
-        <Curso name="React Js" teacher="Leo Messi" duration={7}/>
-        <Curso name="Javascript" teacher="Carlos Gardel" duration={7}/> */}
-        
-      </div>
-    </div>
+    // <div>
+    //   <div className="App">
+    //     <NavBar></NavBar>
+    //   <ItemDetailContainer></ItemDetailContainer> 
+    //   </div>
+    // </div>
   );
 }
 

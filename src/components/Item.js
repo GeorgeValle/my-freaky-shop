@@ -37,7 +37,7 @@ const Item = ({product}) => {
         </CardSubtitle>
     
         <CardText>
-            {description}
+            <Button color="primary" >Ver Detalles</Button>
         </CardText>
         </CardBody>
         <CardFooter>
