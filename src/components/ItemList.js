@@ -9,7 +9,7 @@ const ItemList = ({productList}) => {
             <CardTitle
             tag="h4"
             color="dark"
-            inverse
+            
             >
                 
             Cat&#225;logo
