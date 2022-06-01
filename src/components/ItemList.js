@@ -16,7 +16,7 @@ const ItemList = ({productList}) => {
             </CardTitle>
 
             <CardGroup>
-                    {productList.map((product) =><Item key={product.id} product={product}/>)};
+                    {productList.map((product) =><Item key={product.id} id={product.id} product={product}/>)};
             </CardGroup>    
             </>
             
