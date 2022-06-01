@@ -13,7 +13,7 @@ const ItemDetailContainer=()=>{
     useEffect(()=>{
         setLoader(true)
         getData
-        .then((res)=> setProduct(res.find(item =>item.id===id)))
+        .then((res)=>setProduct(res.find(item=>item.id===id)))
         .catch((error)=> console.log(error))
         .finally(()=> setLoader(false))
 

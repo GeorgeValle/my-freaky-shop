@@ -20,7 +20,7 @@ const NavBar = () =>{
 
             >
                 <h3>
-                My Freaky Shop
+                <span className= "text-danger">M</span>y <span className="text-danger">F</span>reaky <span className= "text-danger">S</span>hop
                 </h3>
             </NavLink>
         
@@ -37,20 +37,20 @@ const NavBar = () =>{
 
         <NavLink
                     // active
-                    href="#"
+                    href="/category/Helmet"
                         > 
-                        Helmets
+                        <h4>Helmets</h4>
                     </NavLink>
-        <NavLink href="#" >
-                        Figuras
-                    </NavLink>
-
-        <NavLink href="#" >
-                        Funko-Pops
+        <NavLink href="/category/Figura" >
+                        <h4>Figura</h4>
                     </NavLink>
 
-        <NavLink href="#" >
-                        Comics
+        <NavLink href="/category/Funko-Pop" >
+                        <h4>Funko-Pops</h4>
+                    </NavLink>
+
+        <NavLink href="/category/Comic" >
+                        <h4>Comics</h4>
                     </NavLink>
 
                 
