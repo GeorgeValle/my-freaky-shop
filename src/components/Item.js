@@ -1,9 +1,9 @@
 import React from 'react'
-import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg} from 'reactstrap'
+import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg, NavLink} from 'reactstrap'
 import ItemCount from './ItemCount'
 const Item = ({product}) => {
     
-    const {img,price,title,description,stock}=product;
+    const {id, img,price,title,stock}=product;
 
     return (
     <>
@@ -37,7 +37,7 @@ const Item = ({product}) => {
         </CardSubtitle>
     
         <CardText>
-            <Button color="primary" >Ver Detalles</Button>
+            <NavLink href={`item/${id}`}><Button color="primary">Ver Detalles</Button></NavLink>
         </CardText>
         </CardBody>
         <CardFooter>
