@@ -5,20 +5,21 @@ import { CardGroup,CardTitle } from 'reactstrap';
 const ItemList = ({productList}) => {
     return(
 
-            <>
-            <CardTitle
+        <>
+        <CardTitle
             tag="h4"
             color="dark"
-            
+            className="text-center"
             >
-                
-            Cat&#225;logo
-            </CardTitle>
+            <h1 className="text-primary">
+                Cat&#225;logo
+            </h1>
+        </CardTitle>
 
-            <CardGroup>
-                    {productList.map((product) =><Item key={product.id} id={product.id} product={product}/>)};
-            </CardGroup>    
-            </>
+        <CardGroup className="mx-auto">
+            {productList.map((product) =><Item key={product.id} id={product.id} product={product}/>)};
+        </CardGroup>    
+        </>
             
             
 
