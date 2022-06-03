@@ -2,7 +2,7 @@
 
 Gracias por visitar este proyecto en React Js
 
-## `Introdución`
+## `Introducción`
 
 El sitio se llama My Freaky Shop y es un Ecommerce orientado a la venta de artículos denominados "Frikis" conteniendo las siguientes categorías:
 
