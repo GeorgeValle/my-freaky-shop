@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# `Bienvenidos`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Gracias por visitar este proyecto en React Js
 
-## Available Scripts
+## `Introdución`
 
-In the project directory, you can run:
+El sitio se llama My Freaky Shop y es un Ecommerce orientado a la venta de artículos denominados "Frikis" conteniendo las siguientes categorías:
 
-### `npm start`
+### `Helmets`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Aquí aparecen los cascos de personajes famosos, por ejemplo los del mundo de Star Wars.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `Figuras`
 
-### `npm test`
+Aquí se destacan los muñecos de personajes de series o peliculas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Funko-Pops`
 
-### `npm run build`
+Se venden los muñecos de la marca más famosa de figuras coleccionables.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Nota: ¡Este tipo de muñeco cabezón difiere de los muñecos tradicionales y los hace  `Muy populares`, !**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Comics`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+En este apartado se destacan las revistas de historietas de distintas editoriales como por ejemplo: DC, Marvel, Etc. 
 
-### `npm run eject`
+## `Librerias y dependencias` 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### bootstrap: "^5.1.3",
+Para el CSS.
+### react: "^18.1.0",
+### react-dom: "^18.1.0",
+### react-icons: "^4.3.1",
+Una libreria que tiene linkeados varias colecciones de iconos gratis. 
+### react-router-dom: "^6.3.0",
+Para poder crear las rutas.
+### react-scripts: "5.0.1",
+### reactstrap: "^9.0.2",
+Una libreria de estilos y formatos adaptada a los componentes de React.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## `Idea del proyecto`
+Me decidí por elegir esta tématica para el Ecommerce, porque es un tema muy común entre los trabajadores IT. La aficción por los productos de series, peliculas, libros, revistas, etc. Que hace mover fanaticos por todo el mundo. encuentra en este sitio, un alisiente a consumir aquellos productos que les trae felicidad. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## `Algunas decisiones puntuales`
 
-## Learn More
+Se eligió la utilización del fondo de color oscuro y la fuente azul. Para la creación de las cards del componente Item, Se implementó una imagen de 400px que puede exapndirse en zoom en la vista  detalles, la cual, se accede a través del botón nombrado "Ver Detalles".
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ El componente ItemCount se utilizó iconos de + -, el badge con la cantidad total de stock, con la caracteristica que evita que pueda agregar al carrito más cantidad de prodicto del total de stock, ní tampoco descontar más allá del cero. Está caracteritica es señalada cuando el botón azul se tiñe de gris. 
+ 
+ Gracias a la librería Reactrap se pudo colocar un loader para ocupar el lugar de la frase "Cargando..." configurado para que un hook de estado marque el momento en el cual aparece y desaparece.
+  
+  El componente CartWidget del Navbar, está creado dentro de un botón el cual será roteado a la zona del carrito de compras.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## `Saludos`
+Les dejó un cordial saludo, agradeciendo su gentileza al observar como está avanzando este Proyecto. Que la fuerza los acompañe.
