@@ -17,7 +17,7 @@ const ItemDetailContainer=()=>{
         .catch((error)=> console.log(error))
         .finally(()=> setLoader(false))
 
-    }, [])
+    }, [id])
     //console.log(productList)
     return (
         <>
