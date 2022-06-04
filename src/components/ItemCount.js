@@ -1,10 +1,12 @@
 import React,{useState}from'react';
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import {Button,Badge }from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MdOutlineAddShoppingCart, MdOutlineShoppingCart } from "react-icons/md";
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
+
 
 //El componente contador
-const ItemCount = ({stock})=>{
+const ItemCount = ({stock, onAdd})=>{
     // inicializamos la variable contador (el desafio pide que empiece en 1).
     const[counter, setCounter]=useState(0);
     let[disabledPlus, setDisabledPlus]=useState("primary");
@@ -33,7 +35,13 @@ const ItemCount = ({stock})=>{
         <Button  onClick={add} color={disabledPlus}><AiOutlinePlusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
         <Badge><h7>{counter}</h7></Badge>
         <Button onClick={subtract} color={disabledMinus}><AiOutlineMinusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
-        <Button  color="primary" outline >Agregar al carrito</Button>
+        
+        {
+            counter!==0
+        ?<Button  color="primary" outline onClick={()=>onAdd(counter)} > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
+        :<Button  color="secondary" outline> <MdOutlineShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
+
+        }
     
 
         </>

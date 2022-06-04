@@ -1,10 +1,10 @@
 import React from 'react'
 import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg, NavLink} from 'reactstrap'
-import ItemCount from './ItemCount'
+// import ItemCount from './ItemCount'
 
 const Item = ({product}) => {
     
-    const {id, img,price,title,stock}=product;
+    const {id, img,price,title/*,stock*/}=product;
 
     return (
     <>
@@ -32,17 +32,18 @@ const Item = ({product}) => {
         
         <CardSubtitle
             className="mb-2 text-muted"
-            tag="h6"
+            tag="h5"
         >
             ${price}
         </CardSubtitle>
     
+        
+        </CardBody>
+        <CardFooter>
         <CardText>
         <NavLink href={`/Item/${id}`}><Button color="primary">Ver Detalles</Button></NavLink>
         </CardText>
-        </CardBody>
-        <CardFooter>
-        <ItemCount stock={stock}/>
+        {/* <ItemCount stock={stock}/> */}
         </CardFooter>
     </Card>
 </div>

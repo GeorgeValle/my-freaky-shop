@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetailContainer from './containers/ItemDetailContainer';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import ItemListContainer from './containers/ItemListContainer';
+import Cart from './components/Cart';
 
 //import Item from './components/Item';
 //import ItemCount from './components/ItemCount';
@@ -25,7 +26,7 @@ function App() {
         <Route path="/" element={<ItemListContainer/>}/>
         <Route path="/category/:id" element={<ItemListContainer/>}/>
         <Route path="/Item/:id" element={<ItemDetailContainer></ItemDetailContainer>}/>
-        {/* <Route path="/" element={<h1></h1>}/> */}
+        <Route path="/Cart" element={<Cart></Cart>}/>
       </Routes>
       </div>
     </BrowserRouter>
