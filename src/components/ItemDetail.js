@@ -1,8 +1,24 @@
-import React from 'react';
+//import React from 'react';
 import ItemCount from './ItemCount';
-import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
+import {Alert,NavLink,Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
+import React,{useState}from'react';
+
 
 const ItemDetail = ({product}) => {
+
+    const [itemCount, setItemCount] =useState(0);
+
+    const [alertOpen, setAlertOpen] = useState(false);
+
+    const onAdd = (qty) => {
+        
+        setAlertOpen(true)
+        setTimeout(() =>{
+            setAlertOpen(false)
+        },3000)
+        setItemCount(qty);
+
+    }
     
     const {img,price,title,description,stock}=product;
     
@@ -54,7 +70,18 @@ const ItemDetail = ({product}) => {
                 </CardText>
             </CardBody>
             <CardFooter>
-                <ItemCount stock={stock}/>
+                <Alert
+                    color="info"
+                    isOpen={alertOpen}
+                    >
+                        {`Has sumado ${itemCount} productos al carrito`}
+                </Alert>
+                {
+                itemCount===0
+                ?<ItemCount stock={stock}  onAdd={onAdd}/>
+                :<NavLink href='/Cart'><Button color="danger" outline>Checkout</Button></NavLink>
+                }
+                
             </CardFooter>
         </Card>
     </Col>

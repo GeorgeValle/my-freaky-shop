@@ -1,5 +1,5 @@
 import { BsFillCartFill } from "react-icons/bs";
-import {Button,Badge }from 'reactstrap';
+import {Button,Badge,NavLink }from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const CartWidget = () =>{
     return(
         <>
-            
+            <NavLink href="/Cart">
             <Button 
                 color="secondary"
             >   
@@ -15,7 +15,7 @@ const CartWidget = () =>{
                 <Badge color="danger" pill >4</Badge>
 
             </Button>     
-            
+            </NavLink>
         </>
 
     )
