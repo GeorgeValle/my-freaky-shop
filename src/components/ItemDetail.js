@@ -1,10 +1,13 @@
 //import React from 'react';
 import ItemCount from './ItemCount';
 import {Alert,NavLink,Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
-import React,{useState}from'react';
+import React,{useState, useContext}from'react';
+import { CartContext } from '../context/CartContext';
 
 
 const ItemDetail = ({product}) => {
+
+    const list = useContext(CartContext);
 
     const [itemCount, setItemCount] =useState(0);
 
@@ -17,6 +20,8 @@ const ItemDetail = ({product}) => {
             setAlertOpen(false)
         },3000)
         setItemCount(qty);
+        list.addProduct(product,qty);
+
 
     }
     
@@ -61,7 +66,7 @@ const ItemDetail = ({product}) => {
             <CardBody>
                 <CardSubtitle
                     className="mb-2 text-muted"
-                    tag="h6"
+                    tag="h5"
                 >
                     ${price}
                 </CardSubtitle>
