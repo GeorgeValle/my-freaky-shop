@@ -60,16 +60,20 @@ const NavBar = () =>{
             </NavItem>
             
             <NavItem>
-                <Button
-                color="primary"
-                outline>
-                    Ingresar
-                </Button>
-                <Button
-                color="primary"
-                >
-                    Registrarse
-                </Button>
+                <NavLink href="/">
+                    <Button
+                    color="primary"
+                    outline>
+                        Ingresar
+                    </Button>
+                </NavLink>
+                <NavLink href="/">
+                    <Button
+                    color="primary"
+                    >
+                        Registrarse
+                    </Button>
+                    </NavLink>
             </NavItem>
             
         </Nav>
