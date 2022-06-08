@@ -7,43 +7,47 @@ const CartContextProvider = ({children})=>{
     const [cartList, setCartList]= useState([]);
     //console.log(cartList);//borrar luego.
 
-    const addProduct = (product,qty)=>{
-        let found = cartList.find(item=>item.id === product.id);
+    const addProduct = (id,title,price,img,qty)=>{
+        let found = cartList.find(item=>item.id === id);
         
-        if ( found === undefined) {
-            setCartList([
-                ...cartList,
-                {
-                    idItem: product.id,
-                    imgItem: product.img[0],
-                    nameItem: product.title,
-                    priceItem: product.price,
-                    qtyItem: qty
-                }
-            ]);
-        } else {
-            //al encontrarlo, entonces aumentamos el qty de ese producto
-            found.qtyItem += qty;
+    //     found === undefined 
+    //         ?setCartList([
+    //             ...cartList,
+    //             {
+    //                 id,
+    //                 img,
+    //                 title,
+    //                 price,
+    //                 qty
+    //             }
+    //         ])
+            
+    //         //aumento la cantidado
+    //         :found.qty += qty;
+
+    //         console.log(cartList)
         
-    }
+    // }
         
         //itemRepeat(item);
 
-        // const findDuplicated = (found, cartList)=>{
-        //     cartList.forEach(element=>{
-        //         if(found.id===element.id);
-        //         return element.quantity +=qty;
-        //     });
-        // }
-        // found
-        // ?findDuplicated(found, cartList)
-        // :setCartList([...cartList,product])
+        const findDuplicated = (found, cartList)=>{
+            cartList.forEach(element=>{
+                if(found.id===element.id);
+                return element.quantity +=qty;
+            });
+       
+        found
+        ?findDuplicated(found, cartList)
+        :setCartList([...cartList,id,title,price,img,qty])
+        }
     }
 
         //para verificar que el item no está en el carrito
-    //     const itemRepeat=(item)=>{
-    //     const found = cartList.find(elt=>elt.id === item.id);
-    // }
+        const isInCart=(item)=>{
+        const found = cartList.find(elt=>elt.id === item.id);
+        console.log(found);
+    }
 
         //elimina un 1 item del carrito
         const removeProduct= (id) =>{
@@ -54,7 +58,10 @@ const CartContextProvider = ({children})=>{
         //para vaciar por completo el carrito de 1 item del carrito
         const removeAllProducts=()=>{
         setCartList([]);
+
     }
+
+    
 
     //const data = {setCartList,addProduct,removeProduct,removeAllProducts,itemRepeat };
 
@@ -64,11 +71,13 @@ const CartContextProvider = ({children})=>{
             cartList,
             addProduct,
             removeProduct,
-            removeAllProducts }}>
+            removeAllProducts,
+            isInCart}}>
         {children}
         </CartContext.Provider>
         </>
     );
-}
+        }
+    
 
 export default CartContextProvider;

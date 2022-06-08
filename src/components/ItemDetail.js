@@ -7,7 +7,9 @@ import { CartContext } from '../context/CartContext';
 
 const ItemDetail = ({product}) => {
 
-    const list = useContext(CartContext);
+    const {id,img,price,title,description,stock}=product;
+
+    const { addProduct } = useContext(CartContext); 
 
     const [itemCount, setItemCount] =useState(0);
 
@@ -20,12 +22,12 @@ const ItemDetail = ({product}) => {
             setAlertOpen(false)
         },3000)
         setItemCount(qty);
-        list.addProduct(product,qty);
+        addProduct(id,title,price,img,qty);
 
 
     }
     
-    const {img,price,title,description,stock}=product;
+    
     
     return (
         <>
