@@ -1,4 +1,4 @@
-import react from 'react';
+// import react from 'react';
 import Item from './Item';
 import { CardGroup,CardTitle } from 'reactstrap';
 
@@ -7,13 +7,13 @@ const ItemList = ({productList}) => {
 
         <>
         <CardTitle
-            tag="h4"
+            tag="h2"
             color="dark"
             className="text-center"
             >
-            <h1 className="text-primary">
+            
                 Cat&#225;logo
-            </h1>
+            
         </CardTitle>
 
         <CardGroup className="mx-auto">

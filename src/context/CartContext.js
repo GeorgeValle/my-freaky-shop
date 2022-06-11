@@ -1,83 +1,70 @@
-import React, {createContext, useState} from 'react';
+import { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
-const CartContextProvider = ({children})=>{
-    // array de productos de compra
-    const [cartList, setCartList]= useState([]);
-    //console.log(cartList);//borrar luego.
+const CartContextProvider = ({ children }) => {
 
-    const addProduct = (id,title,price,img,qty)=>{
-        let found = cartList.find(item=>item.id === id);
-        
-    //     found === undefined 
-    //         ?setCartList([
-    //             ...cartList,
-    //             {
-    //                 id,
-    //                 img,
-    //                 title,
-    //                 price,
-    //                 qty
-    //             }
-    //         ])
-            
-    //         //aumento la cantidado
-    //         :found.qty += qty;
+  const [cartList, setCartList] = useState([]);
 
-    //         console.log(cartList)
-        
-    // }
-        
-        //itemRepeat(item);
+  const addItem = (item, setCantidad) => {
+console.log(setCantidad);
+console.log(item)
+console.log(item.id)
 
-        const findDuplicated = (found, cartList)=>{
-            cartList.forEach(element=>{
-                if(found.id===element.id);
-                return element.quantity +=qty;
-            });
-       
-        found
-        ?findDuplicated(found, cartList)
-        :setCartList([...cartList,id,title,price,img,qty])
-        }
-    }
-
-        //para verificar que el item no está en el carrito
-        const isInCart=(item)=>{
-        const found = cartList.find(elt=>elt.id === item.id);
-        console.log(found);
-    }
-
-        //elimina un 1 item del carrito
-        const removeProduct= (id) =>{
-        const result = cartList.filter(item => item.id !==id);
-        setCartList(result);
-    }
-
-        //para vaciar por completo el carrito de 1 item del carrito
-        const removeAllProducts=()=>{
-        setCartList([]);
-
-    }
-
+  
+    const exist = cartList.find((cartItem) => cartItem.id === parseInt(item.id));
     
+    if (exist) {
+      
+      setCartList(
 
-    //const data = {setCartList,addProduct,removeProduct,removeAllProducts,itemRepeat };
+        cartList.map((cartItem) =>
 
-    return (
-        <>
-        <CartContext.Provider value={{
-            cartList,
-            addProduct,
-            removeProduct,
-            removeAllProducts,
-            isInCart}}>
-        {children}
-        </CartContext.Provider>
-        </>
-    );
-        }
-    
+          cartItem.id === item.id
+
+            ? { ...cartItem, cantidad: cartItem.cantidad + setCantidad }
+
+            : cartItem
+
+        )
+
+      );
+
+    } else {
+
+      setCartList([...cartList, { ...item, cantidad: setCantidad }]);
+
+      //let $cartList =JSON.parse(sessionStorage.getItem('cartList'))
+                 //let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
+                const $cartListJSON = JSON.stringify(cartList);      
+                sessionStorage.setItem('cartList', $cartListJSON)
+
+    }
+
+  };
+
+  const removeItem = (id) => {
+
+    setCartList(cartList.filter((item) => item.id !== id));
+
+  };
+
+  const clear = () => {
+
+    setCartList([]);
+
+  };
+
+  return (
+
+    <CartContext.Provider value={{ cartList, addItem, removeItem, clear }}>
+
+      {children}
+
+    </CartContext.Provider>
+
+  );
+
+};
 
 export default CartContextProvider;

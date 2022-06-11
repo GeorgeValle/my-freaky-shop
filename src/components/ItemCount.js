@@ -14,15 +14,15 @@ const ItemCount = ({stock, onAdd})=>{
     //suma el use state
     
     const add=()=>{
-        counter<stock 
-        ?setCounter(counter+1,disabledMinus="primary"   )
+        counter!==stock 
+        ?setCounter(counter+1,disabledMinus="primary")
         :setDisabledPlus(disabledPlus='secondary');
         //counter>0&&setDisabledPlus(disabledPlus="primary");
         setDisabledMinus(disabledMinus="primary");
     }
     //resta el use state
     const subtract=()=>{
-        counter>0
+        counter!==0
         ?(setCounter(counter-1 ) )
         :setDisabledMinus(disabledMinus='secondary');
         //counter>0&&setDisabledMinus(disabledMinus="primary");
@@ -33,14 +33,13 @@ const ItemCount = ({stock, onAdd})=>{
         <>
     
         <Button  onClick={add} color={disabledPlus}><AiOutlinePlusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
-        <Badge><h7>{counter}</h7></Badge>
+        <Badge>{counter}</Badge>
         <Button onClick={subtract} color={disabledMinus}><AiOutlineMinusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
         
         {
-            counter!==0
-        ?<Button  color="primary" outline onClick={()=>onAdd(counter)} > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
-        :<Button  color="secondary" outline> <MdOutlineShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
-
+            counter===0
+        ?<Button  color="secondary" outline> <MdOutlineShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
+        :<Button  color="primary" outline onClick={()=>onAdd(counter)} > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
         }
     
 
