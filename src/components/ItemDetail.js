@@ -5,7 +5,7 @@ import React,{useState, useContext}from'react';
 import { CartContext } from '../context/CartContext';
 //import { Link } from 'react-router-dom';
 
-// Alert,
+
 
 const ItemDetail = ({product}) => {
 
@@ -15,14 +15,11 @@ const ItemDetail = ({product}) => {
 
     const [itemCount, setItemCount] =useState(0);
 
-    //const [alertOpen, setAlertOpen] = useState(false);
+    
 
     const onAdd = (qty) => {
         alert(`cargó ${qty} productos`)
-        // setAlertOpen(true)
-        // setTimeout(() =>{
-        //     setAlertOpen(false)
-        // },3000)
+        
         setItemCount(qty);
         addItem(product,qty);
 
@@ -87,12 +84,6 @@ const ItemDetail = ({product}) => {
                 </CardText>
             </CardBody>
             <CardFooter>
-                {/* <Alert
-                    color="info"
-                    isOpen={alertOpen}
-                    >
-                        {`Has sumado ${itemCount} productos al carrito`}
-                </Alert> */}
                 {
                 itemCount===0
                 ?<ItemCount stock={stock}  onAdd={onAdd}/>
