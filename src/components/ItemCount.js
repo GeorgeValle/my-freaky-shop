@@ -11,10 +11,10 @@ const ItemCount = ({stock, onAdd})=>{
     const[counter, setCounter]=useState(0);
     let[disabledPlus, setDisabledPlus]=useState("primary");
     let[disabledMinus, setDisabledMinus]=useState("primary");
+
     //suma el use state
-    
     const add=()=>{
-        counter!==stock 
+        counter<stock 
         ?setCounter(counter+1,disabledMinus="primary")
         :setDisabledPlus(disabledPlus='secondary');
         //counter>0&&setDisabledPlus(disabledPlus="primary");
@@ -22,8 +22,8 @@ const ItemCount = ({stock, onAdd})=>{
     }
     //resta el use state
     const subtract=()=>{
-        counter!==0
-        ?(setCounter(counter-1 ) )
+        counter>0
+        ?(setCounter(counter-1) )
         :setDisabledMinus(disabledMinus='secondary');
         //counter>0&&setDisabledMinus(disabledMinus="primary");
         setDisabledPlus(disabledPlus="primary");
