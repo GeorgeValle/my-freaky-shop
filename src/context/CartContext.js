@@ -1,5 +1,4 @@
-import { createContext, useState } from "react";
-
+import React,{ createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
@@ -7,12 +6,12 @@ const CartContextProvider = ({ children }) => {
   const [cartList, setCartList] = useState([]);
 
   const addItem = (item, setCantidad) => {
-console.log(setCantidad);
-console.log(item)
-console.log(item.id)
+  console.log(setCantidad);
+  console.log(item)
+  console.log(item.id)
 
   
-    const exist = cartList.find((cartItem) => cartItem.id === parseInt(item.id));
+    const exist = cartList.find((cartItem) => cartItem.id === item.id);
     
     if (exist) {
       
@@ -34,24 +33,22 @@ console.log(item.id)
 
       setCartList([...cartList, { ...item, cantidad: setCantidad }]);
 
-      //let $cartList =JSON.parse(sessionStorage.getItem('cartList'))
-                 //let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
-                const $cartListJSON = JSON.stringify(cartList);      
-                sessionStorage.setItem('cartList', $cartListJSON)
-
     }
-
-  };
+      
+};
 
   const removeItem = (id) => {
 
     setCartList(cartList.filter((item) => item.id !== id));
+    //cartTemp.filter((product)=>product.id !==id);
 
   };
 
   const clear = () => {
 
     setCartList([]);
+    // const $cartListJSON = JSON.stringify([]);      
+    // sessionStorage.setItem('cartList', $cartListJSON)
 
   };
 
