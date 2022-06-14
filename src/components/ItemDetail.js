@@ -1,9 +1,9 @@
 //import React from 'react';
 import ItemCount from './ItemCount';
-import {NavLink,Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
-import React,{useState, useContext}from'react';
+import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
+import React,{useState, useContext }from'react';
 import { CartContext } from '../context/CartContext';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,7 +21,11 @@ const ItemDetail = ({product}) => {
         alert(`cargó ${qty} productos`)
         
         setItemCount(qty);
+
+
+        
         addItem(product,qty);
+        
 
             //harcoreo el array
         // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
@@ -87,7 +91,7 @@ const ItemDetail = ({product}) => {
                 {
                 itemCount===0
                 ?<ItemCount stock={stock}  onAdd={onAdd}/>
-                :<NavLink href='/Cart' ><Button color="danger" onClick={(e) => {e.stopPropagation()}} outline>Checkout</Button></NavLink>
+                :<Link to='/Cart' style={{Decoration: "none"}}><Button color="danger"  outline>Checkout</Button></Link>
                 }
                 
             </CardFooter>
