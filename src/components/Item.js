@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg, NavLink} from 'reactstrap'
+import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg} from 'reactstrap'
+import { Link } from 'react-router-dom';
 // import ItemCount from './ItemCount'
 
 const Item = ({product}) => {
@@ -41,7 +42,7 @@ const Item = ({product}) => {
         </CardBody>
         <CardFooter>
         <CardText>
-        <NavLink href={`/Item/${id}`}><Button color="primary">Ver Detalles</Button></NavLink>
+        <Link to={`/Item/${id}`} style={{ Decoration: "none"}}><Button color="primary">Ver Detalles</Button></Link>
         </CardText>
         {/* <ItemCount stock={stock}/> */}
         </CardFooter>

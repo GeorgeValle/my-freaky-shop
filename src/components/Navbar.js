@@ -1,8 +1,8 @@
 //import './styles/Navbar.css';
 import CartWidget from './CartWidget';
-import {Navbar, Nav, NavItem,NavLink, Button } from 'reactstrap';
+import {Navbar, Nav, NavItem, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NavBar = () =>{
     return(
@@ -13,17 +13,19 @@ const NavBar = () =>{
         light
 
         >
-            <NavLink
             
-            href="/"
             
-            className="me-2 brand"
-
-            >
+            
+            
+            
+                <Link to="/" 
+                style={{color: "White", Decoration: "none"}}
+                >
                 <h3>
                 <span className= "text-danger">M</span>y <span className="text-danger">F</span>reaky <span className= "text-danger">S</span>hop
                 </h3>
-            </NavLink>
+                </Link>
+            
         
 
         
@@ -36,23 +38,39 @@ const NavBar = () =>{
             
                 
 
-        <NavLink
-                    // active
-                    href="/category/Helmet"
-                        > 
+        
+                    
+                    
+                         
+                        <Link to="/category/Helmet"
+                        style={{color: "White", Decoration: "none"}}
+                        >
                         <h4>Helmets</h4>
-                    </NavLink>
-        <NavLink href="/category/Figura" >
+                        </Link>
+                    
+        
+                        <Link to="/category/Figura"
+                        style={{color: "White", Decoration: "none"}}
+                        >
                         <h4>Figura</h4>
-                    </NavLink>
+                        </Link>
+                    
 
-        <NavLink href="/category/Funko-Pop" >
+        
+                        <Link to="/category/Funko-Pop"
+                        style={{color: "White", Decoration: "none"}}
+                        >
                         <h4>Funko-Pops</h4>
-                    </NavLink>
+                        </Link>
+                    
 
-        <NavLink href="/category/Comic" >
+        
+                        <Link to="/category/Comic"
+                        style={{color: "White", Decoration: "none"}}
+                        >
                         <h4>Comics</h4>
-                    </NavLink>
+                        </Link>
+                    
 
                 
             
@@ -61,20 +79,28 @@ const NavBar = () =>{
             </NavItem>
             
             <NavItem>
-                <NavLink href="/">
+                
+                    <Link to="/"
+                    style={{color: "White", Decoration: "none"}}
+                    >
                     <Button
                     color="primary"
                     outline>
                         Ingresar
                     </Button>
-                </NavLink>
-                <NavLink href="/">
+                    </Link>
+                
+                
+                    <Link to="/"
+                    style={{color: "White", Decoration: "none"}}
+                    >
                     <Button
                     color="primary"
                     >
                         Registrarse
                     </Button>
-                    </NavLink>
+                    </Link>
+                    
             </NavItem>
             
         </Nav>

@@ -2,7 +2,9 @@ import { FcPaid } from "react-icons/fc";
 import React, {CartContext} from "../context/CartContext";
 import {useContext } from "react"
 import CartProduct from "./CartProduct";
-import {Button,NavLink} from "reactstrap"
+import {Button} from "reactstrap"
+import { Link } from 'react-router-dom';
+import CartTotals from "./CartTotals";
 
 
 
@@ -10,8 +12,10 @@ const Cart = () => {
 
     
     
-    //const { cartList } = useContext(CartContext);
+    const { cartList } = useContext(CartContext);
     const list =useContext(CartContext);
+    const { totalPrice } = useContext(CartContext);
+    let subTotal = (totalPrice / 1.22).toFixed(2);
     // const [cartList,setCartList]= useState([]);
     
 
@@ -22,16 +26,19 @@ const Cart = () => {
     return(
         <>
         <h1>Carro de compras</h1>;
-        <NavLink href="/"><Button>Seguir Comprando</Button></NavLink>
-        <Button onClick={list.clear} >Remover todo</Button>
+        <Link to="/" style={{ Decoration: "none"}}><Button color="primary">Seguir Comprando</Button></Link>
+        
         
         {    
             
-            list.cartList.length ===0
-            ?<h2>Su carro esta vacio <FcPaid/></h2>
+            cartList.length ===0
+            ?(<h2>Su carro esta vacio <FcPaid/></h2>)
             
-            :list.cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} qty={item.qty}/>)            
-
+            :(
+                <Button color="danger" onClick={list.clear} >Remover todo</Button>,
+                <CartTotals subtotal={subTotal} totalPrice={totalPrice}  ></CartTotals>,
+            cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} qty={item.qty}/>)            
+            )
         }
 
             
