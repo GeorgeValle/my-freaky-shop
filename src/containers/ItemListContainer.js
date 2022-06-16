@@ -14,15 +14,17 @@ const ItemListContainer=({greeting})=>{
 
     useEffect(()=>{
         setLoader(true);
-        const firebaseFetch = async ()=>{
-            const querySnapshot = await getDocs(collection(db, "products"));
-            querySnapshot.forEach((doc) => {
-                console.log(doc.id, "=>", doc.data());
-    });
+        FireStoreFetch(id)
+            .then(result=>setProductList(result))
+            .catch(err=>console.log(err));
+        // const firebaseFetch = async ()=>{
+        //     const querySnapshot = await getDocs(collection(db, "products"));
+        //     querySnapshot.forEach((doc) => {
+        //         console.log(doc.id, "=>", doc.data());
+    //});
     
-    };   
-    firebaseFetch();
-    }, [id])
+    
+    }, [id]);
     //console.log(productList)
     return (
         <>
