@@ -32,7 +32,7 @@ return (
             className="mb-2 text-muted"
             tag="h5"
         >
-        IVA USD {(totalPrice - subTotal).toFixed(2)}
+        IVA Ars {(totalPrice - subTotal).toFixed(2)}
         </CardSubtitle>
         
         </CardBody>
