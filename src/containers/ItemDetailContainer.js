@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import ItemDetail from '../components/ItemDetail'
 import { Spinner } from 'reactstrap';
-import { getData } from '../mocks/productsArray';
+//import { getData } from '../mocks/productsArray';
 import { useParams } from 'react-router-dom';
+import {firestoreFetchOne} from '..utils/FireStoreFetch';
 
 const ItemDetailContainer=()=>{
     const [loader, setLoader]=useState(false);
@@ -12,8 +13,8 @@ const ItemDetailContainer=()=>{
 
     useEffect(()=>{
         setLoader(true)
-        getData
-        .then((res)=>setProduct(res.find(item=>item.id===id)))
+        firestoreFetchOne(id)
+        .then((res)=>setProduct(res))
         .catch((error)=> console.log(error))
         .finally(()=> setLoader(false))
 

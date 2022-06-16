@@ -3,7 +3,7 @@ import ItemList from '../components/ItemList'
 import { Spinner } from 'reactstrap';
 //import { getData } from '../mocks/productsArray';
 import {useParams} from 'react-router-dom';
-import {FireStoreFetch} from '..utils/FireStoreFetch'
+import {firestoreFetch} from '..utils/FireStoreFetch'
 
 
 const ItemListContainer=({greeting})=>{
@@ -14,9 +14,10 @@ const ItemListContainer=({greeting})=>{
 
     useEffect(()=>{
         setLoader(true);
-        FireStoreFetch(id)
+        firestoreFetch(id)
             .then(result=>setProductList(result))
-            .catch(err=>console.log(err));
+            .catch(err=>console.log(err))
+            .finally(()=> setLoader(false));
         // const firebaseFetch = async ()=>{
         //     const querySnapshot = await getDocs(collection(db, "products"));
         //     querySnapshot.forEach((doc) => {
