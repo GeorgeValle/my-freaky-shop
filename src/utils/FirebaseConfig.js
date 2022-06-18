@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const FirebaseConfig = {
     apiKey: "AIzaSyA7k4nlILH2z51vlL_CSOp0JKrO4hrSO6w",
     authDomain: "myfreakyshop.firebaseapp.com",
     projectId: "myfreakyshop",
@@ -15,7 +15,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(FirebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
