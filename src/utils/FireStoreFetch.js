@@ -8,7 +8,7 @@ export const FirestoreFetch = async (id) => {
     if (id) {
         q = query(collection(db, "products"), where('category', '==', id));
     } else {
-        q = query(collection(db, "products"), orderBy('name'));
+        q = query(collection(db, "products"), orderBy('title'));
     }
     const querySnapshot = await getDocs(q);
     const dataFromFirestore = querySnapshot.docs.map(document => ({
