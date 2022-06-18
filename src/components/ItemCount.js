@@ -7,7 +7,7 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 
 //El componente contador
 const ItemCount = ({stock, onAdd})=>{
-    // inicializamos la variable contador (el desafio pide que empiece en 1).
+    // inicializamos la variable contador.
     const[counter, setCounter]=useState(0);
     let[disabledPlus, setDisabledPlus]=useState("primary");
     let[disabledMinus, setDisabledMinus]=useState("primary");
@@ -17,7 +17,7 @@ const ItemCount = ({stock, onAdd})=>{
         counter<stock 
         ?setCounter(counter+1,disabledMinus="primary")
         :setDisabledPlus(disabledPlus='secondary');
-        //counter>0&&setDisabledPlus(disabledPlus="primary");
+        
         setDisabledMinus(disabledMinus="primary");
     }
     //resta el use state
@@ -25,7 +25,7 @@ const ItemCount = ({stock, onAdd})=>{
         counter>0
         ?(setCounter(counter-1) )
         :setDisabledMinus(disabledMinus='secondary');
-        //counter>0&&setDisabledMinus(disabledMinus="primary");
+        
         setDisabledPlus(disabledPlus="primary");
     }
 

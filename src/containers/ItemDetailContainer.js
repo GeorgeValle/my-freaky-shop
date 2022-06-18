@@ -21,7 +21,7 @@ const ItemDetailContainer=()=>{
         .finally(()=> setLoader(false))
 
     }, [id])
-    //console.log(productList)
+    
     return (
         <>
         

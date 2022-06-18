@@ -24,18 +24,14 @@ const ItemListContainer=()=>{
             .finally(
                 ()=> setLoader(false)
                 );
-        // const firebaseFetch = async ()=>{
-        //     const querySnapshot = await getDocs(collection(db, "products"));
-        //     querySnapshot.forEach((doc) => {
-        //         console.log(doc.id, "=>", doc.data());
-    //});
+        
     
     
     }, [id]);
-    //console.log(productList)
+    
     return (
         <>
-        {/* <div>{greeting}</div> */}
+        
 
         {loader
             ?<Spinner color="secondary"></Spinner>
