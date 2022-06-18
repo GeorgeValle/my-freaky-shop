@@ -16,12 +16,14 @@ const ItemListContainer=()=>{
         setLoader(true);
         FirestoreFetch(id)
             .then(result=>
-                id===undefined
-                ?setProductList(result)
-                :setProductList(result.filter(item=>item.category.includes(id)))
+                setProductList(result)
                 )
-            .catch(err=>console.log(err))
-            .finally(()=> setLoader(false));
+            .catch(
+                err=>console.log(err)
+                )
+            .finally(
+                ()=> setLoader(false)
+                );
         // const firebaseFetch = async ()=>{
         //     const querySnapshot = await getDocs(collection(db, "products"));
         //     querySnapshot.forEach((doc) => {
