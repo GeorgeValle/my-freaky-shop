@@ -1,4 +1,3 @@
-//import React from 'react';
 import ItemCount from './ItemCount';
 import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
 import React,{useState, useContext }from'react';

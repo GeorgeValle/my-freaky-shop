@@ -16,11 +16,8 @@ const ItemList = ({productList}) => {
                 tag="h2"
                 color="white"
                 className="text-center"
-            
             >
-            
                 Cat&#225;logo
-            
             </CardTitle>
         </Card>
         <CardGroup className="mx-auto">

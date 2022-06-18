@@ -16,24 +16,22 @@ const ItemListContainer=()=>{
         setLoader(true);
         FirestoreFetch(id)
             .then(result=>
-                id===undefined
-                ?setProductList(result)
-                :setProductList(result.filter(item=>item.category.includes(id)))
+                setProductList(result)
                 )
-            .catch(err=>console.log(err))
-            .finally(()=> setLoader(false));
-        // const firebaseFetch = async ()=>{
-        //     const querySnapshot = await getDocs(collection(db, "products"));
-        //     querySnapshot.forEach((doc) => {
-        //         console.log(doc.id, "=>", doc.data());
-    //});
+            .catch(
+                err=>console.log(err)
+                )
+            .finally(
+                ()=> setLoader(false)
+                );
+        
     
     
     }, [id]);
-    //console.log(productList)
+    
     return (
         <>
-        {/* <div>{greeting}</div> */}
+        
 
         {loader
             ?<Spinner color="secondary"></Spinner>
