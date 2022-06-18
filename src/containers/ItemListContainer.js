@@ -3,10 +3,10 @@ import ItemList from '../components/ItemList'
 import { Spinner } from 'reactstrap';
 //import { getData } from '../mocks/productsArray';
 import {useParams} from 'react-router-dom';
-import {firestoreFetch} from '..utils/FireStoreFetch'
+import {FirestoreFetch} from '../utils/FireStoreFetch'
 
-
-const ItemListContainer=({greeting})=>{
+//recibía grettings {greeting}
+const ItemListContainer=()=>{
     const [loader, setLoader]=useState(false);
     const [productList, setProductList]=useState([]);
     const {id}=useParams();
@@ -14,8 +14,12 @@ const ItemListContainer=({greeting})=>{
 
     useEffect(()=>{
         setLoader(true);
-        firestoreFetch(id)
-            .then(result=>setProductList(result))
+        FirestoreFetch(id)
+            .then(result=>
+                id===undefined
+                ?setProductList(result)
+                :setProductList(result.filter(item=>item.category.includes(id)))
+                )
             .catch(err=>console.log(err))
             .finally(()=> setLoader(false));
         // const firebaseFetch = async ()=>{
@@ -29,10 +33,10 @@ const ItemListContainer=({greeting})=>{
     //console.log(productList)
     return (
         <>
-        <div>{greeting}</div>
+        {/* <div>{greeting}</div> */}
 
         {loader
-            ?<Spinner color="secondary">Cargando...</Spinner>
+            ?<Spinner color="secondary"></Spinner>
             :<ItemList productList={productList}/>}
         </>
     );
