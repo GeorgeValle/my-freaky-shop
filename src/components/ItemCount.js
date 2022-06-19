@@ -15,7 +15,7 @@ const ItemCount = ({stock, onAdd})=>{
     //suma el use state
     const add=()=>{
         counter<stock 
-        ?setCounter(counter+1,disabledMinus="primary")
+        ?setCounter(counter+1)
         :setDisabledPlus(disabledPlus='secondary');
         
         setDisabledMinus(disabledMinus="primary");
@@ -23,7 +23,7 @@ const ItemCount = ({stock, onAdd})=>{
     //resta el use state
     const subtract=()=>{
         counter>0
-        ?(setCounter(counter-1) )
+        ?setCounter(counter-1)
         :setDisabledMinus(disabledMinus='secondary');
         
         setDisabledPlus(disabledPlus="primary");
@@ -39,7 +39,7 @@ const ItemCount = ({stock, onAdd})=>{
         {
             counter===0
         ?<Button  color="secondary" outline> <MdOutlineShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
-        :<Button  color="primary" outline onClick={()=>onAdd(counter)} > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
+        :<Button  color="primary" outline onClick={(e)=>{e.stopPropagation(); onAdd(counter)}} > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
         }
     
 

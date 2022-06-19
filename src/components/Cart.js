@@ -37,7 +37,7 @@ const Cart = () => {
             :(
                 <Button color="danger" onClick={list.clear} >Remover todo</Button>,
                 <CartTotals subtotal={subTotal} totalPrice={totalPrice}  ></CartTotals>,
-            cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} qty={item.qty}/>)            
+            cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} cantidad={item.cantidad}/>)            
             )
         }
 

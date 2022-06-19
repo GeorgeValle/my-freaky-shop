@@ -5,7 +5,7 @@ import {CartContext} from "../context/CartContext";
 
 // Alert,
 //, useState
-const CartProduct = (key,img,title,price,qty) => {
+const CartProduct = ({key,img,title,price,cantidad}) => {
 
     const {removeItem} =useContext(CartContext);
 
@@ -57,7 +57,7 @@ const CartProduct = (key,img,title,price,qty) => {
         
                     <CardHeader>
                         <CardText>
-                            {qty}
+                            {cantidad}
                         </CardText>
                     </CardHeader>
             <CardBody>
@@ -68,7 +68,7 @@ const CartProduct = (key,img,title,price,qty) => {
                     ${price}
                 </CardSubtitle>
                 <CardText>
-                    Stock de {qty} unidades.
+                    Stock de {cantidad} unidades.
                 </CardText>
             </CardBody>
             <CardFooter>

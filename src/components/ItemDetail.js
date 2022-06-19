@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const ItemDetail = ({product}) => {
 
-    const {img,price,title,description,stock}=product;
+    const {id,img,price,title,description,stock}=product;
 
     const { addItem } = useContext(CartContext); 
 
@@ -17,13 +17,13 @@ const ItemDetail = ({product}) => {
     
 
     const onAdd = (qty) => {
-        alert(`cargó ${qty} productos`)
+        alert(`cargó ${qty} productos`);
         
         setItemCount(qty);
 
 
         
-        addItem(product,qty);
+        addItem({id,img,price,title,qty});
         
 
             //harcoreo el array
