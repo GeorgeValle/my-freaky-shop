@@ -9,20 +9,16 @@ const NavBar = () =>{
         <>
         <div>
         <Navbar
-        color="dark"
-        light
+            color="dark"
+            light
 
         >
             
-            
-            
-            
-            
                 <Link to="/" 
-                style={{color: "White", Decoration: "none"}}
+                    style={{color: "White", Decoration: "none"}}
                 >
                 <h3>
-                <span className= "text-danger">M</span>y <span className="text-danger">F</span>reaky <span className= "text-danger">S</span>hop
+                    <span className= "text-danger">M</span>y <span className="text-danger">F</span>reaky <span className= "text-danger">S</span>hop
                 </h3>
                 </Link>
             
@@ -35,22 +31,15 @@ const NavBar = () =>{
         >
 
             
-            
-                
-
-        
-                    
-                    
-                         
                         <Link to="/category/Helmet"
-                        style={{color: "White", Decoration: "none"}}
+                            style={{color: "White", Decoration: "none"}}
                         >
                         <h4>Helmets</h4>
                         </Link>
                     
         
                         <Link to="/category/Figura"
-                        style={{color: "White", Decoration: "none"}}
+                            style={{color: "White", Decoration: "none"}}
                         >
                         <h4>Figura</h4>
                         </Link>
@@ -58,7 +47,7 @@ const NavBar = () =>{
 
         
                         <Link to="/category/Funko-Pop"
-                        style={{color: "White", Decoration: "none"}}
+                            style={{color: "White", Decoration: "none"}}
                         >
                         <h4>Funko-Pops</h4>
                         </Link>
@@ -66,13 +55,10 @@ const NavBar = () =>{
 
         
                         <Link to="/category/Comic"
-                        style={{color: "White", Decoration: "none"}}
+                            style={{color: "White", Decoration: "none"}}
                         >
                         <h4>Comics</h4>
                         </Link>
-                    
-
-                
             
             <NavItem>
                 <CartWidget/>
@@ -81,11 +67,12 @@ const NavBar = () =>{
             <NavItem>
                 
                     <Link to="/"
-                    style={{color: "White", Decoration: "none"}}
+                        style={{color: "White", Decoration: "none"}}
                     >
                     <Button
-                    color="primary"
-                    outline>
+                        color="primary"
+                        outline
+                    >
                         Ingresar
                     </Button>
                     </Link>
@@ -95,7 +82,7 @@ const NavBar = () =>{
                     style={{color: "White", Decoration: "none"}}
                     >
                     <Button
-                    color="primary"
+                        color="primary"
                     >
                         Registrarse
                     </Button>
