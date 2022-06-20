@@ -1,7 +1,7 @@
 import React from 'react';
-import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText} from 'reactstrap'
+import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText} from 'reactstrap'
 
-const CartTotals =(subTotal, totalPrice)=>{
+const CartTotals =(subTotal, totalPrice, createOrder)=>{
 
 
 return (
@@ -40,7 +40,7 @@ return (
         <CardText>
         TOTAL Ars ${totalPrice}
         </CardText>
-        
+        <Button onClick={createOrder} color="danger" outline>¡Checkout Ahora!</Button>
         </CardFooter>
     </Card>
 </div>
