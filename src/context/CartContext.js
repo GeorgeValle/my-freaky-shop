@@ -1,5 +1,7 @@
 import React,{ createContext, useState, useEffect } from "react";
-export const CartContext = createContext();
+
+
+const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
 
@@ -7,6 +9,7 @@ const CartContextProvider = ({ children }) => {
   const [addChange, setAddChange] = useState(0);
   const [itemsTotal, setItemsTotal] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  
 
   // const addItem = (item, setCantidad) => {
   // console.log(setCantidad);
@@ -16,12 +19,13 @@ const CartContextProvider = ({ children }) => {
 // }, 
 
 
-const addItem = ({id, img, price, title, qty}) =>{
+const addItem =  ({id, img, price, title, qty}) =>{
         
   setAddChange(addChange + 1)
 
-  const found = cartList.find(el => el.id === id);
-  console.log(qty);
+  const found =  cartList.find(el => el.id === id);
+  console.log(`id: ${id}img: ${img}Precio: ${price}titulo: ${title}cantidad: ${qty}`);
+  
   const findDuplicated = (found, cartList) => {
     cartList.forEach(element => {
           if (found.id === element.id) {
@@ -29,8 +33,10 @@ const addItem = ({id, img, price, title, qty}) =>{
           }
       })
   }
-  if (found) { findDuplicated(found, cartList)} else {setCartList([...cartList, {id, price, title, qty, img}])}
+  if (found)  { findDuplicated(found, cartList)} else {setCartList([...cartList, {id, img, price, title, qty}])}
   console.log(cartList+"el cartList");
+
+  
 }
 
 
@@ -85,13 +91,14 @@ const addItem = ({id, img, price, title, qty}) =>{
     let adding = 0;
     cartList.forEach(el => adding = adding + el.qty)
     setItemsTotal(adding)
-}, [addChange])
+}, [addChange,cartList])
 
 useEffect(()=>{
     let addingPrice = 0;
     cartList.forEach(el => addingPrice = addingPrice + (el.qty * el.price))
     setTotalPrice(addingPrice)
-}, [addChange])
+}, [addChange,cartList])
+
 
 
   return (
@@ -106,4 +113,4 @@ useEffect(()=>{
 
 };
 
-export default CartContextProvider;
+export { CartContextProvider, CartContext };

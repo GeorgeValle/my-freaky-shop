@@ -7,7 +7,7 @@ import {FirestoreFetchOne} from '../utils/FireStoreFetch';
 
 const ItemDetailContainer=()=>{
     const [loader, setLoader]=useState(false);
-    const [product, setProduct]=useState([]);
+    const [product, setProduct]=useState({});
     const {id}=useParams();
     
 
