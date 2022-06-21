@@ -1,6 +1,6 @@
 import { FcPaid } from "react-icons/fc";
 import React, {CartContext} from "../context/CartContext";
-import {useContext } from "react"
+import {useContext/*, useState, useEffect*/} from "react"
 import CartProduct from "./CartProduct";
 import {Button} from "reactstrap"
 import { Link } from 'react-router-dom';
@@ -17,13 +17,14 @@ const Cart = () => {
     const list =useContext(CartContext);
     const { totalPrice } = useContext(CartContext);
     let subTotal = (totalPrice / 1.22).toFixed(2);
-    // const [cartList,setCartList]= useState([]);
+
+    //
     
     // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
     // setCartList($cartList);
 
     const createOrder= ()=>{
-        alert('createOrder');
+        //alert('createOrder');
         //array que se crea para dejar listo los items para la orden
         const itemsForDB= cartList.map(item=>({
             id:item.id,
@@ -65,6 +66,8 @@ const Cart = () => {
 
     }
     
+   
+    
     return(
         <>
         <h1>Carro de compras</h1>;
@@ -79,7 +82,7 @@ const Cart = () => {
             :(
                 <Button color="danger" onClick={list.clear} >Remover todo</Button>,
                 <CartTotals subtotal={subTotal} totalPrice={totalPrice} createOrder={createOrder} ></CartTotals>,
-            cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} cantidad={item.cantidad}/>)            
+            cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} cantidad={item.qty}/>)            
             )
         }
 

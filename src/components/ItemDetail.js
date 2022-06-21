@@ -17,13 +17,16 @@ const ItemDetail = ({product}) => {
     
 
     const onAdd = (qty) => {
-        alert(`cargó ${qty} productos`);
         
+        alert(`cargó ${qty} productos`);
+        addItem({id,img,price,title,qty});
         setItemCount(qty);
 
 
         
-        addItem({id,img,price,title,qty});
+        
+
+        
         
 
             //harcoreo el array
