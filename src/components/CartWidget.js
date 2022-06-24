@@ -9,7 +9,7 @@ import {CartContext} from "../context/CartContext";
 
 const CartWidget = () =>{
     // const quantity =useContext(CartContext);
-    const {itemsTotal}= useContext(CartContext);
+    const list= useContext(CartContext);
 
     return(
         <>
@@ -19,7 +19,7 @@ const CartWidget = () =>{
                 color="secondary"
             >   
                 <BsFillCartFill style={{color: 'white', fontSize: '24px'}} />
-                <Badge color="danger" pill >{itemsTotal}</Badge>
+                <Badge color="danger" pill >{list.calcItemsQty()}</Badge>
 
             </Button>
             </Link>     

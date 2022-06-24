@@ -1,8 +1,11 @@
-import React from 'react';
+
 import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText} from 'reactstrap'
+import React, {CartContext} from "../context/CartContext";
+import {useContext/*, useState, useEffect*/} from "react"
 
-const CartTotals =(subTotal, totalPrice, createOrder)=>{
+const CartTotals =(createOrder)=>{
 
+    const list = useContext(CartContext);
 
 return (
     <>
@@ -26,19 +29,19 @@ return (
             className="mb-2 text-muted"
             tag="h5"
         >
-            Subtotal Ars ${subTotal}
+            Subtotal Ars ${list.calcSubTotal()}
         </CardSubtitle>
         <CardSubtitle
             className="mb-2 text-muted"
             tag="h5"
         >
-        IVA Ars {(totalPrice - subTotal).toFixed(2)}
+        IVA Ars {(list.calcTaxes()).toFixed(2)}
         </CardSubtitle>
         
         </CardBody>
         <CardFooter>
         <CardText>
-        TOTAL Ars ${totalPrice}
+        TOTAL Ars ${list.calcTotal()}
         </CardText>
         <Button onClick={createOrder} color="danger" outline>¡Checkout Ahora!</Button>
         </CardFooter>
