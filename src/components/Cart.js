@@ -2,7 +2,7 @@ import { FcPaid } from "react-icons/fc";
 import React, {CartContext} from "../context/CartContext";
 import {useContext/*, useState, useEffect*/} from "react"
 import CartProduct from "./CartProduct";
-import {Button} from "reactstrap"
+import {Button,Card,CardTitle} from "reactstrap"
 import { Link } from 'react-router-dom';
 import CartTotals from "./CartTotals";
 import { serverTimestamp, setDoc, doc, collection, updateDoc, increment } from "firebase/firestore";
@@ -15,9 +15,12 @@ const Cart = () => {
     
     const { cartList } = useContext(CartContext);
     const list =useContext(CartContext);
-    const { totalPrice } = useContext(CartContext);
-    let subTotal = (totalPrice / 1.22).toFixed(2);
+    //const { totalPrice } = useContext(CartContext);
+    //let subTotal = (totalPrice / 1.22).toFixed(2);
 
+
+
+    
     //
     
     // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
@@ -42,7 +45,7 @@ const Cart = () => {
             },
             date: serverTimestamp(),      
             items: itemsForDB,
-            total:totalPrice(),
+            total:list.calcTotal(),
         };
 
         const createOrderInFirestore = async()=>{
@@ -66,24 +69,36 @@ const Cart = () => {
 
     }
     
-   
+
+
     
     return(
         <>
-        <h1>Carro de compras</h1>;
+        <Card
+            body
+            color="dark"
+            inverse>
+        <CardTitle
+            tag="h2"
+            color="white"
+            className="text-center"
+        >
+            <h1>Carro de compras</h1>
+        </CardTitle>
         <Link to="/" style={{ Decoration: "none"}}><Button color="primary">Seguir Comprando</Button></Link>
-        
+        </Card>
         
         {    
             
-            cartList.length ===0
-            ?(<h2>Su carro esta vacio <FcPaid/></h2>)
+            cartList.length > 0  
             
-            :(
+            ?(
                 <Button color="danger" onClick={list.clear} >Remover todo</Button>,
-                <CartTotals subtotal={subTotal} totalPrice={totalPrice} createOrder={createOrder} ></CartTotals>,
-            cartList.map((item) =><CartProduct key={item.id} img={item.img} title={item.title} price={item.price} cantidad={item.qty}/>)            
+                <CartTotals  createOrder={createOrder} ></CartTotals>,
+            cartList.map((item) =><CartProduct key={item.id} product={item}/>)            
             )
+
+            :(<h2>Su carro esta vacio <FcPaid/></h2>)
         }
 
             

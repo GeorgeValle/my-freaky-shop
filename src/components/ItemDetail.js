@@ -1,6 +1,6 @@
 import ItemCount from './ItemCount';
 import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
-import React,{useState, useContext }from'react';
+import React,{useState, useContext } from'react';
 import { CartContext } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
@@ -92,7 +92,7 @@ const ItemDetail = ({product}) => {
             <CardFooter>
                 {
                 itemCount===0
-                ?<ItemCount stock={stock}  onAdd={onAdd}/>
+                ?<ItemCount stock={stock} initial={itemCount}  onAdd={onAdd}/>
                 :<Link to='/Cart' style={{Decoration: "none"}}><Button color="danger"  outline>Checkout</Button></Link>
                 }
                 
