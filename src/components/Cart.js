@@ -5,16 +5,16 @@ import CartProduct from "./CartProduct";
 import {Button,Card,CardTitle} from "reactstrap"
 import { Link } from 'react-router-dom';
 import CartTotals from "./CartTotals";
-import { serverTimestamp, setDoc, doc, collection, updateDoc, increment } from "firebase/firestore";
-import db from '../utils/FirebaseConfig';
+
 
 
 const Cart = () => {
 
-    
-    
+    const list = useContext(CartContext);
     const { cartList } = useContext(CartContext);
-    const list =useContext(CartContext);
+    
+    // const { cartList } = useContext(CartContext);
+    // const list =useContext(CartContext);
     //const { totalPrice } = useContext(CartContext);
     //let subTotal = (totalPrice / 1.22).toFixed(2);
 
@@ -26,48 +26,48 @@ const Cart = () => {
     // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
     // setCartList($cartList);
 
-    const createOrder= ()=>{
-        //alert('createOrder');
-        //array que se crea para dejar listo los items para la orden
-        const itemsForDB= cartList.map(item=>({
-            id:item.id,
-            price: item.price,
-            qty:item.qty,
-            title: item.title
+    // const createOrder= ()=>{
+    //     //alert('createOrder');
+    //     //array que se crea para dejar listo los items para la orden
+    //     const itemsForDB= cartList.map(item=>({
+    //         id:item.id,
+    //         price: item.price,
+    //         qty:item.qty,
+    //         title: item.title
             
 
-        }))
-        let order={
-            buyer:{
-                email: "leo@messi.com",
-                name: "leo Messi",
-                phone: "02523543456"
-            },
-            date: serverTimestamp(),      
-            items: itemsForDB,
-            total:list.calcTotal(),
-        };
+    //     }))
+    //     let order={
+    //         buyer:{
+    //             email: "leo@messi.com",
+    //             name: "leo Messi",
+    //             phone: "02523543456"
+    //         },
+    //         date: serverTimestamp(),      
+    //         items: itemsForDB,
+    //         total:list.calcTotal(),
+    //     };
 
-        const createOrderInFirestore = async()=>{
-            const newOrderRef = doc(collection(db,"orders"));
-            await setDoc(newOrderRef,order)
-            return newOrderRef;
-        }
+    //     const createOrderInFirestore = async()=>{
+    //         const newOrderRef = doc(collection(db,"orders"));
+    //         await setDoc(newOrderRef,order)
+    //         return newOrderRef;
+    //     }
 
-        createOrderInFirestore()
-        .then(result=>alert("Your ID Order is: " + result.id))
-        .catch(err => console.log(err));
+    //     createOrderInFirestore()
+    //     .then(result=>alert("Your ID Order is: " + result.id))
+    //     .catch(err => console.log(err));
 
-        cartList.forEach(async item=>{
-            const itemRef =doc(db, "products", item.id);
-            await updateDoc(itemRef,{
-                stock:increment(-item.qty)
-            })
-        });
+    //     cartList.forEach(async item=>{
+    //         const itemRef =doc(db, "products", item.id);
+    //         await updateDoc(itemRef,{
+    //             stock:increment(-item.qty)
+    //         })
+    //     });
         
-        list.clear();
+    //     list.clear();
 
-    }
+    // }
     
 
 
@@ -94,7 +94,7 @@ const Cart = () => {
             
             ?(
                 <Button color="danger" onClick={list.clear} >Remover todo</Button>,
-                <CartTotals  createOrder={createOrder} ></CartTotals>,
+                <CartTotals   ></CartTotals>,
             cartList.map((item) =><CartProduct key={item.id} product={item}/>)            
             )
 

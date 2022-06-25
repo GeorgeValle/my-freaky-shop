@@ -6,6 +6,11 @@ import {CartContext} from "../context/CartContext";
 // Alert,
 //, useState
 const CartProduct = ({product}) => {
+
+    
+
+
+
     const {id,img,title,price,qty} = product;
 
     const {removeItem} =useContext(CartContext);
