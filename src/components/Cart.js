@@ -1,8 +1,8 @@
 import { FcPaid } from "react-icons/fc";
 import React, {CartContext} from "../context/CartContext";
 import {useContext/*, useState, useEffect*/} from "react"
-import CartProduct from "./CartProduct";
-import {Button,Card,CardTitle} from "reactstrap"
+//import CartProduct from "./CartProduct";
+import {Button,Card,CardTitle,CardText,CardSubtitle,CardBody,CardFooter, Col, Row,CardHeader,CardImg} from "reactstrap"
 import { Link } from 'react-router-dom';
 import CartTotals from "./CartTotals";
 
@@ -11,7 +11,7 @@ import CartTotals from "./CartTotals";
 const Cart = () => {
 
     const list = useContext(CartContext);
-    const { cartList } = useContext(CartContext);
+    //const { cartList } = useContext(CartContext);
     
     // const { cartList } = useContext(CartContext);
     // const list =useContext(CartContext);
@@ -79,26 +79,99 @@ const Cart = () => {
             color="dark"
             inverse>
         <CardTitle
-            tag="h2"
+            tag="h1"
             color="white"
             className="text-center"
         >
-            <h1>Carro de compras</h1>
+            <div>Carro de compras</div>
         </CardTitle>
         <Link to="/" style={{ Decoration: "none"}}><Button color="primary">Seguir Comprando</Button></Link>
         </Card>
         
         {    
             
-            cartList.length > 0  
+            list.cartList.length > 0 &&
+            <Button color="danger" onClick={list.clear} >Remover todo</Button>
             
-            ?(
-                <Button color="danger" onClick={list.clear} >Remover todo</Button>,
-                <CartTotals   ></CartTotals>,
-            cartList.map((item) =><CartProduct key={item.id} product={item}/>)            
-            )
+                
+                    
+        }
 
-            :(<h2>Su carro esta vacio <FcPaid/></h2>)
+        {
+            list.cartList.length > 0 && <CartTotals   ></CartTotals>
+        }
+
+        {
+            list.cartList.map((item) =>  
+            <div key={item.id}>
+            <Row >
+                <Col sm="10" md="8" lg="6">
+                <Card 
+                    body
+                    color="dark"
+                    inverse
+                    >
+        
+                    <CardHeader>
+                        <CardTitle 
+                        tag="h5"
+                        >
+                            
+                            {item.title}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardImg
+                    alt={item.title}
+                    src={item.img}
+                    top
+                    width="50%"
+                    />
+                    <Button color="primary" onClick={list.removeItem(item.id)}>Remover producto</Button>
+                    </Card>
+                </Col>
+                <Col sm="10" md="8" lg="6">
+                    <Card 
+                        body
+                        color="dark"
+                        inverse
+                    >
+        
+                    <CardHeader>
+                        <CardText>
+                            {item.qty}
+                        </CardText>
+                    </CardHeader>
+            <CardBody>
+                <CardSubtitle
+                    className="mb-2 text-muted"
+                    tag="h5"
+                    
+                >
+                    ${item.price}
+                </CardSubtitle>
+                <CardText>
+                    Stock de {item.qty} unidades.
+                </CardText>
+            </CardBody>
+            <CardFooter>
+            
+                
+            </CardFooter>
+        </Card>
+                {/* <Alert
+                    color="info"
+                    isOpen={alertOpen}
+                    >
+                        {`Se eliminó ${qty} productos del carrito`}
+                </Alert> */}
+    </Col>
+</Row>
+</div>
+)
+        }
+
+        {
+            list.cartList.length === 0 &&(<h2>Su carro esta vacio <FcPaid/></h2>)
         }
 
             
