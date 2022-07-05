@@ -83,19 +83,19 @@ return (
             className="mb-2 text-muted"
             tag="h5"
         >
-            Subtotal Ars ${list.calcSubTotal()}
+            Subtotal Ars: ${list.calcSubTotal().toFixed(2)}
         </CardSubtitle>
         <CardSubtitle
             className="mb-2 text-muted"
             tag="h5"
         >
-        IVA Ars {(list.calcTaxes()).toFixed(2)}
+        IVA Ars: ${(list.calcTaxes()).toFixed(2)}
         </CardSubtitle>
         
         </CardBody>
         <CardFooter>
         <CardText>
-        TOTAL Ars ${list.calcTotal()}
+        TOTAL Ars: ${list.calcTotal().toFixed(2)}
         </CardText>
         <Button onClick={createOrder} color="danger" outline>¡Checkout Ahora!</Button>
         </CardFooter>

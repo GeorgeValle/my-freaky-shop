@@ -1,4 +1,5 @@
 import React,{ createContext, useState/*, useEffect*/ } from "react";
+import {Button, CardImg, Row,  Col, Card, CardHeader, CardText, CardBody, CardSubtitle, CardTitle, CardFooter} from "reactstrap";
 
 
 const CartContext = createContext();
@@ -29,7 +30,7 @@ const addItem =  ({id, img, price, title, qty}) =>{
   const found =  cartList.find(el => el.id === id);
   console.log(`id: ${id}img: ${img} Precio: ${price} titulo: ${title} cantidad: ${qty}`);
   
- 
+
   const findDuplicated = (found, cartList) => {
     cartList.forEach(element => {
           if (found.id === element.id) {
@@ -79,8 +80,8 @@ console.log(cartList+"el dentro cartList");
 
 
 
-const removeItem = (id) => {
-  let result = cartList.filter(item => item.id !== id);
+const removeItem = (identify) => {
+  let result = cartList.filter(item => item.id !== identify);
   setCartList(result);
 }
 
@@ -117,12 +118,82 @@ const calcTaxes = () => {
 }
 
 const calcTotal = () => {
-  return calcSubTotal();
+  return calcSubTotal()+calcTaxes();
 }
 
 const calcItemsQty = () => {
   let qtys = cartList.map(item => item.qty);
   return qtys.reduce(((previousValue, currentValue) => previousValue + currentValue), 0);
+}
+
+//muesta los detalles de los productos del carrito
+const renderCartlist= () =>{
+  
+  return cartList.map((item) =>  
+  <div key={item.id}>
+  <Row >
+                <Col sm="10" md="8" lg="6">
+                <Card 
+                    body
+                    color="dark"
+                    inverse
+                    >
+        
+                    <CardHeader>
+                        <CardTitle 
+                        tag="h5"
+                        >
+                            
+                            {item.title}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardImg
+                    alt={item.title}
+                    src={item.img}
+                    top
+                    width="10%"
+                    />
+                    <Button color="primary" onClick={() => removeItem(item.id)}>Remover producto</Button>
+                    </Card>
+                </Col>
+                <Col sm="10" md="8" lg="6">
+                    <Card 
+                        body
+                        color="dark"
+                        inverse
+                    >
+        
+                    <CardHeader>
+                        <CardText>
+                            Cantidad: {item.qty}
+                        </CardText>
+                    </CardHeader>
+            <CardBody>
+                <CardSubtitle
+                    className="mb-2 text-muted"
+                    tag="h5"
+                    
+                >
+                    Precio unitario ${item.price}
+                </CardSubtitle>
+                
+            </CardBody>
+            <CardFooter>
+            
+                
+            </CardFooter>
+        </Card>
+                {/* <Alert
+                    color="info"
+                    isOpen={alertOpen}
+                    >
+                        {`Se eliminó ${qty} productos del carrito`}
+                </Alert> */}
+    </Col>
+</Row>
+</div>
+)
+
 }
 
 
@@ -154,7 +225,8 @@ const calcItemsQty = () => {
         calcSubTotal,
         calcItemsQty,
         calcTotal,
-        calcTaxes
+        calcTaxes,
+        renderCartlist
         }}>
 
       {children}

@@ -2,7 +2,7 @@ import { FcPaid } from "react-icons/fc";
 import React, {CartContext} from "../context/CartContext";
 import {useContext/*, useState, useEffect*/} from "react"
 //import CartProduct from "./CartProduct";
-import {Button,Card,CardTitle,CardText,CardSubtitle,CardBody,CardFooter, Col, Row,CardHeader,CardImg} from "reactstrap"
+import {Button,Card,CardTitle/*,CardText,CardSubtitle,CardBody,CardFooter, Col, Row,CardHeader,CardImg*/} from "reactstrap"
 import { Link } from 'react-router-dom';
 import CartTotals from "./CartTotals";
 
@@ -91,7 +91,11 @@ const Cart = () => {
         {    
             
             list.cartList.length > 0 &&
+            <Card body color="dark" inverse>
             <Button color="danger" onClick={list.clear} >Remover todo</Button>
+            </Card>
+            
+            
             
                 
                     
@@ -101,73 +105,9 @@ const Cart = () => {
             list.cartList.length > 0 && <CartTotals   ></CartTotals>
         }
 
-        {
-            list.cartList.map((item) =>  
-            <div key={item.id}>
-            <Row >
-                <Col sm="10" md="8" lg="6">
-                <Card 
-                    body
-                    color="dark"
-                    inverse
-                    >
-        
-                    <CardHeader>
-                        <CardTitle 
-                        tag="h5"
-                        >
-                            
-                            {item.title}
-                        </CardTitle>
-                    </CardHeader>
-                    <CardImg
-                    alt={item.title}
-                    src={item.img}
-                    top
-                    width="50%"
-                    />
-                    <Button color="primary" onClick={list.removeItem(item.id)}>Remover producto</Button>
-                    </Card>
-                </Col>
-                <Col sm="10" md="8" lg="6">
-                    <Card 
-                        body
-                        color="dark"
-                        inverse
-                    >
-        
-                    <CardHeader>
-                        <CardText>
-                            {item.qty}
-                        </CardText>
-                    </CardHeader>
-            <CardBody>
-                <CardSubtitle
-                    className="mb-2 text-muted"
-                    tag="h5"
-                    
-                >
-                    ${item.price}
-                </CardSubtitle>
-                <CardText>
-                    Stock de {item.qty} unidades.
-                </CardText>
-            </CardBody>
-            <CardFooter>
+{
+        list.calcItemsQty !==0 && list.renderCartlist()
             
-                
-            </CardFooter>
-        </Card>
-                {/* <Alert
-                    color="info"
-                    isOpen={alertOpen}
-                    >
-                        {`Se eliminó ${qty} productos del carrito`}
-                </Alert> */}
-    </Col>
-</Row>
-</div>
-)
         }
 
         {
