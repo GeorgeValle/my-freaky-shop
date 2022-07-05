@@ -1,10 +1,12 @@
-
 import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText} from 'reactstrap'
 import React, {CartContext} from "../context/CartContext";
-import {useContext/*, useState, useEffect*/} from "react"
+import {useContext} from "react"
 import { serverTimestamp, setDoc, doc, collection, updateDoc, increment } from "firebase/firestore";
 import db from '../utils/FirebaseConfig';
 
+
+//muestra el resumen de compra y contiene 
+// la lógica para crear una orden en la DB
 const CartTotals =()=>{
 
     const list = useContext(CartContext);
@@ -14,7 +16,7 @@ const CartTotals =()=>{
 
 
     const createOrder= ()=>{
-        //alert('createOrder');
+        
         //array que se crea para dejar listo los items para la orden
         const itemsForDB= cartList.map(item=>({
             id:item.id,
@@ -55,10 +57,6 @@ const CartTotals =()=>{
         list.clear();
 
     }
-
-
-
-
 
 
 return (

@@ -1,11 +1,11 @@
 import React from 'react'
 import {Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,Button,CardImg} from 'reactstrap'
 import { Link } from 'react-router-dom';
-// import ItemCount from './ItemCount'
+
 
 const Item = ({product}) => {
     
-    const {id, img,price,title/*,stock*/}=product;
+    const {id, img,price,title}=product;
 
     return (
     <>
@@ -42,9 +42,8 @@ const Item = ({product}) => {
         </CardBody>
         <CardFooter>
         <CardText>
-        <Link to={`/Item/${id}`} style={{ Decoration: "none"}}><Button color="primary">Ver Detalles</Button></Link>
+        <Link to={`/Item/${id}`} ><Button color="primary">Ver Detalles</Button></Link>
         </CardText>
-        {/* <ItemCount stock={stock}/> */}
         </CardFooter>
     </Card>
 </div>

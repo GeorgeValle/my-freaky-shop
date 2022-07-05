@@ -1,6 +1,6 @@
 
 
-
+// quedó como o muestra de como está conformada la base de datos.
     const products = [
         {id:'01',title:'Casco Darth Vader', category:"Helmet", description:'Casco de Darth Vader de Star Wars', price:'85000',stock:5, img:'../images/Casco-Darth-Vader-Helmet.jpg '},
         {id:'02',title:'Casco Boba Fett', category:"Helmet", description:'Casco de Boba Fett de Star Wars',price:'79000',stock:5 , img:'../images/Casco-The-Boba-Fett-Helmet.jpg'},

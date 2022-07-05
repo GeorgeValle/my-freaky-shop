@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ItemDetail from '../components/ItemDetail'
 import { Spinner } from 'reactstrap';
-//import { getData } from '../mocks/productsArray';
 import { useParams } from 'react-router-dom';
 import {FirestoreFetchOne} from '../utils/FireStoreFetch';
 

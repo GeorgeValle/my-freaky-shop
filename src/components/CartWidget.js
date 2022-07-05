@@ -6,15 +6,14 @@ import { useContext } from "react";
 import {CartContext} from "../context/CartContext";
 
 
-
+//boton carrito de la navbar
 const CartWidget = () =>{
-    // const quantity =useContext(CartContext);
     const list= useContext(CartContext);
 
     return(
         <>
             
-            <Link to="/Cart" style={{ Decoration: "none"}}>
+            <Link to="/Cart">
             <Button 
                 color="secondary"
             >   
