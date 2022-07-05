@@ -15,28 +15,12 @@ const ItemDetail = ({product}) => {
     const [itemCount, setItemCount] =useState(0);
 
     
-
+    //función para sumar productos al carrito
     const onAdd = (qty) => {
         
         alert(`cargó ${qty} productos`);
         addItem({id,img,price,title,qty});
         setItemCount(qty);
-
-
-        
-        
-
-        
-        
-
-            //harcoreo el array
-        // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
-
-        // $cartList=[...$cartList,{id,title,price,img,qty}];
-
-        // const $cartListJSON = JSON.stringify($cartList);      
-        //         sessionStorage.setItem('cartList', $cartListJSON)
-        //<Link to='/Cart' style={{textDecoration: "none"}}
 
     }
     
@@ -93,7 +77,7 @@ const ItemDetail = ({product}) => {
                 {
                 itemCount===0
                 ?<ItemCount stock={stock} initial={itemCount}  onAdd={onAdd}/>
-                :<Link to='/Cart' style={{Decoration: "none"}}><Button color="danger"  outline>Checkout</Button></Link>
+                :<Link to='/Cart'><Button color="danger"  outline>Checkout</Button></Link>
                 }
                 
             </CardFooter>

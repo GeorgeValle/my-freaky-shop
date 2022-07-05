@@ -9,8 +9,8 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 const ItemCount = ({stock=0, initial=1,  onAdd})=>{
     // inicializamos la variable contador.
     const[counter, setCounter]=useState(Number(initial));
-    //let[disabledPlus, setDisabledPlus]=useState("primary");
-    //let[disabledMinus, setDisabledMinus]=useState("primary");
+    
+    //use states para desabilitar los botones + y -
     let[blockedPlus, setBlockedPlus]=useState(false);
     let[blockedMinus, setBlockedMinus]=useState(false);
     
@@ -23,7 +23,7 @@ const ItemCount = ({stock=0, initial=1,  onAdd})=>{
         
         setBlockedMinus(false);
 
-        //setDisabledMinus(disabledMinus="primary");
+        
     }
     //resta el use state
     const subtract=()=>{
@@ -32,21 +32,21 @@ const ItemCount = ({stock=0, initial=1,  onAdd})=>{
         :setBlockedMinus(true);
         
         setBlockedPlus(false);
-        //setDisabledPlus(disabledPlus="primary");
+        
     }
 
     return(
         <>
     
-        <Button  onClick={add} color="primary" disabled={blockedPlus}><AiOutlinePlusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
+        <Button  onClick={add} color="primary" disabled={blockedPlus} className="m-2"><AiOutlinePlusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
         <Badge>{counter}</Badge>
-        <Button onClick={subtract} color="primary" disabled={blockedMinus}><AiOutlineMinusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
+        <Button onClick={subtract} color="primary" disabled={blockedMinus} className="m-2"><AiOutlineMinusCircle style={{color: 'white', fontSize: '18px'}} /></Button>
         
         {
             counter===0
             
-        ?<Button  color="secondary" outline> <MdOutlineShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
-        :<Button  color="primary" outline onClick={(e)=>{e.stopPropagation(); onAdd(counter)}} > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
+        ?<Button  color="secondary" outline className="m-2"> <MdOutlineShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
+        :<Button  color="primary" outline onClick={(e)=>{e.stopPropagation(); onAdd(counter)}} className="m-2" > <MdOutlineAddShoppingCart style={{color: 'white', fontSize: '18px'}}/> Agregar al carrito</Button>
         }
     
 

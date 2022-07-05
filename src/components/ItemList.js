@@ -1,7 +1,6 @@
-// import react from 'react';
 import Item from './Item';
 import { CardGroup,CardTitle,Card } from 'reactstrap';
-//import { Link } from 'react-router-dom';
+
 
 const ItemList = ({productList}) => {
     return(

@@ -1,4 +1,4 @@
-import React,{ createContext, useState/*, useEffect*/ } from "react";
+import React,{ createContext, useState} from "react";
 import {Button, CardImg, Row,  Col, Card, CardHeader, CardText, CardBody, CardSubtitle, CardTitle, CardFooter} from "reactstrap";
 
 
@@ -9,26 +9,15 @@ const CartContextProvider = ({ children }) => {
   
 
   const [cartList, setCartList] = useState([]);
-  const [addChange, setAddChange] = useState(0);
-  // const [itemsTotal, setItemsTotal] = useState(0);
-  // const [totalPrice, setTotalPrice] = useState(0);
   
-
-  // const addItem = (item, setCantidad) => {
-  // console.log(setCantidad);
-  // console.log(item)
-  // console.log(item.id)
-
-// }, 
 
 
 const addItem =  ({id, img, price, title, qty}) =>{
         
-  setAddChange(addChange + 1)
 
-  //setCartList([...cartList, {id, img, price, title, qty}])
+
   const found =  cartList.find(el => el.id === id);
-  console.log(`id: ${id}img: ${img} Precio: ${price} titulo: ${title} cantidad: ${qty}`);
+  
   
 
   const findDuplicated = (found, cartList) => {
@@ -47,36 +36,6 @@ const addItem =  ({id, img, price, title, qty}) =>{
 
 
 
-console.log(cartList+"el dentro cartList");
-
-//     setAddChange(addChange + 1)
-//     const exist = cartList.find((cartItem) => cartItem.id === item.id);
-    
-//     if (exist) {
-      
-//       setCartList(
-
-//         cartList.map((cartItem) =>
-
-//           cartItem.id === item.id
-
-//             ? { ...cartItem, cantidad: cartItem.cantidad + setCantidad }
-
-//             : cartItem
-
-//         )
-
-//       );
-
-//     } else {
-
-//       setCartList([...cartList, { ...item, cantidad: setCantidad }]);
-
-//     }
-  
-    
-//     console.log(cartList+"el cartList"); 
-// };
 
 
 
@@ -86,21 +45,12 @@ const removeItem = (identify) => {
 }
 
 
-  // const removeItem = (id) => {
-
-  //   setAddChange(addChange + 1)
-  //   const removed =cartList.filter((item) => item.id !== id)
-  //   setCartList(removed);
-  //   //cartTemp.filter((product)=>product.id !==id);
-
-  // };
+  
 
   const clear = () => {
 
     setCartList([]);
-    // const $cartListJSON = JSON.stringify([]);      
-    // sessionStorage.setItem('cartList', $cartListJSON)
-
+    
   };
 
   const calcTotalPerItem = (id) => {
@@ -113,14 +63,17 @@ const calcSubTotal = () => {
   return totalPerItem.reduce((previousValue, currentValue) => previousValue + currentValue);
 }
 
+//calcula el iva del 21% de Argentina
 const calcTaxes = () => {
   return calcSubTotal() * 0.21;
 }
 
+//calcula el totol
 const calcTotal = () => {
   return calcSubTotal()+calcTaxes();
 }
 
+//calcula la cantidad total de items en el carrito
 const calcItemsQty = () => {
   let qtys = cartList.map(item => item.qty);
   return qtys.reduce(((previousValue, currentValue) => previousValue + currentValue), 0);
@@ -183,12 +136,6 @@ const renderCartlist= () =>{
                 
             </CardFooter>
         </Card>
-                {/* <Alert
-                    color="info"
-                    isOpen={alertOpen}
-                    >
-                        {`Se eliminó ${qty} productos del carrito`}
-                </Alert> */}
     </Col>
 </Row>
 </div>
@@ -196,25 +143,9 @@ const renderCartlist= () =>{
 
 }
 
-
-
-//   useEffect(()=>{
-//     let adding = 0;
-//     cartList.forEach(el => adding = adding + el.qty)
-//     setItemsTotal(adding)
-// }, [addChange,cartList])
-
-// useEffect(()=>{
-//     let addingPrice = 0;
-//     cartList.forEach(el => addingPrice = addingPrice + (el.qty * el.price))
-//     setTotalPrice(addingPrice)
-// }, [addChange,cartList])
-
-
-
   return (
 
-    // <CartContext.Provider value={{itemsTotal, totalPrice, cartList,  addItem, removeItem, clear }}>
+
 
     <CartContext.Provider value={{
       cartList,

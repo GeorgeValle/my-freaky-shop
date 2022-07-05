@@ -1,8 +1,7 @@
 import { FcPaid } from "react-icons/fc";
 import React, {CartContext} from "../context/CartContext";
-import {useContext/*, useState, useEffect*/} from "react"
-//import CartProduct from "./CartProduct";
-import {Button,Card,CardTitle/*,CardText,CardSubtitle,CardBody,CardFooter, Col, Row,CardHeader,CardImg*/} from "reactstrap"
+import {useContext} from "react"
+import {Button,Card,CardTitle} from "reactstrap"
 import { Link } from 'react-router-dom';
 import CartTotals from "./CartTotals";
 
@@ -11,63 +10,7 @@ import CartTotals from "./CartTotals";
 const Cart = () => {
 
     const list = useContext(CartContext);
-    //const { cartList } = useContext(CartContext);
     
-    // const { cartList } = useContext(CartContext);
-    // const list =useContext(CartContext);
-    //const { totalPrice } = useContext(CartContext);
-    //let subTotal = (totalPrice / 1.22).toFixed(2);
-
-
-
-    
-    //
-    
-    // let $cartList =JSON.parse(sessionStorage.getItem('cartList'))||[];
-    // setCartList($cartList);
-
-    // const createOrder= ()=>{
-    //     //alert('createOrder');
-    //     //array que se crea para dejar listo los items para la orden
-    //     const itemsForDB= cartList.map(item=>({
-    //         id:item.id,
-    //         price: item.price,
-    //         qty:item.qty,
-    //         title: item.title
-            
-
-    //     }))
-    //     let order={
-    //         buyer:{
-    //             email: "leo@messi.com",
-    //             name: "leo Messi",
-    //             phone: "02523543456"
-    //         },
-    //         date: serverTimestamp(),      
-    //         items: itemsForDB,
-    //         total:list.calcTotal(),
-    //     };
-
-    //     const createOrderInFirestore = async()=>{
-    //         const newOrderRef = doc(collection(db,"orders"));
-    //         await setDoc(newOrderRef,order)
-    //         return newOrderRef;
-    //     }
-
-    //     createOrderInFirestore()
-    //     .then(result=>alert("Your ID Order is: " + result.id))
-    //     .catch(err => console.log(err));
-
-    //     cartList.forEach(async item=>{
-    //         const itemRef =doc(db, "products", item.id);
-    //         await updateDoc(itemRef,{
-    //             stock:increment(-item.qty)
-    //         })
-    //     });
-        
-    //     list.clear();
-
-    // }
     
 
 
@@ -102,16 +45,15 @@ const Cart = () => {
         }
 
         {
-            list.cartList.length > 0 && <CartTotals   ></CartTotals>
-        }
-
-{
-        list.calcItemsQty !==0 && list.renderCartlist()
-            
+            list.cartList.length > 0 && <CartTotals></CartTotals>
         }
 
         {
-            list.cartList.length === 0 &&(<h2>Su carro esta vacio <FcPaid/></h2>)
+        list.calcItemsQty !==0 && list.renderCartlist() 
+        }
+
+        {
+            list.cartList.length === 0 &&(<h2 className="text-white text-center m-4">Su carro  est&#225; vacio <FcPaid/></h2>)
         }
 
             

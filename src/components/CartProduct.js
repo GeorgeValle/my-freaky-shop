@@ -1,10 +1,9 @@
-// import React from 'react'
+
 import {useContext} from "react"
 import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText,CardImg,Row,Col} from 'reactstrap'
 import {CartContext} from "../context/CartContext";
 
-// Alert,
-//, useState
+
 const CartProduct = ({product}) => {
 
     
@@ -15,22 +14,12 @@ const CartProduct = ({product}) => {
 
     const {removeItem} =useContext(CartContext);
 
-    //const list = useContext(CartContext);
-    //const [alertOpen, setAlertOpen]= useState(false);
-    
-    // const deleted = () =>{
-    //     removeItem(key)
-    //     setAlertOpen(true)
-    //     setTimeout(() =>{
-    //         setAlertOpen(false)
-    //     },3000)
-    // }
-
+   
 
 
     return (
     <>
-    {/* <div>CartProduct</div> */}
+    
     <Row>
                 <Col sm="10" md="8" lg="6">
                 <Card 
@@ -85,12 +74,7 @@ const CartProduct = ({product}) => {
                 
             </CardFooter>
         </Card>
-                {/* <Alert
-                    color="info"
-                    isOpen={alertOpen}
-                    >
-                        {`Se eliminó ${qty} productos del carrito`}
-                </Alert> */}
+                
     </Col>
 </Row>
 
