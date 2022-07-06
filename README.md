@@ -1,5 +1,7 @@
 # My Freaky Shop
 
+![App Screenshot](https://res.cloudinary.com/georgevalle/image/upload/v1657077569/freaky-shop/mini_gif_final_myfreakyshop_fuli5u.gif)
+
 ## `Introducción`
 
 El sitio se llama My Freaky Shop y es un Ecommerce orientado a la venta de artículos denominados "Frikis" conteniendo las siguientes categorías:
@@ -43,6 +45,8 @@ Me decidí por elegir esta tématica para el Ecommerce, porque es un tema muy co
 - Se decidió usar como una exportación el componente NavBar debido a un conflicto de nombres.
 
 - Se crearon dos gif con la grabacion del sitio, uno intermedio y otro final, donde se muestra el funcionamiento de la app, en encuentran wn la raiz del proyecto.
+
+- El despliegue está hecho en Vercell por una cuestion de rapida actualizacion de cambios a través del repositorio.
 
 ## Comenzando 🚀
 
@@ -112,6 +116,11 @@ Para crear la producción en la carpeta `build` .\
 esta obtendrá el código minificado para tener una mejor performance y poder cargarlo en un servidor.
 ```
 
+-Para visualizar el resultado final puedes entrar al siguiente link:_
+
+https://vercel.com/georgevalle/my-freaky-shop/D4TG5qymGqrnbJwKdyzQ382DHvUt
+
+
 ## Construido con 🛠️
 
 
@@ -122,6 +131,7 @@ esta obtendrá el código minificado para tener una mejor performance y poder ca
 * [NPM] (https://www.npmjs.com) - Manejador de paquetes
 * [Firebase] (https://firebase.google.com/) - Gestor de Backend
 * [Cloudinary] (https://cloudinary.com/) - Plataforma de almacenamiento de imagenes
+* [Vercel] (https://vercel.com/) - para el despliegue web de la app
 
 
 
