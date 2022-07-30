@@ -2,8 +2,22 @@ import CartWidget from './CartWidget';
 import {Navbar, Nav, NavItem, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import {CartContext} from "../context/CartContext";
+import {useContext} from "react";
+import {useNavigate} from "react-router-dom";
+
 
 const NavBar = () =>{
+    const navigate= useNavigate();
+    const {user, logout, loading}= useContext(CartContext);
+
+    const handleLogout = async () =>{
+        await logout();
+        navigate('/');
+    }
+
+    if(loading) return <h1>loading</h1>
+
     return(
         <>
         <div>
@@ -67,8 +81,15 @@ const NavBar = () =>{
             </NavItem>
             
             <NavItem>
+
+
+                    {/* <button
+                        onClick={handleLogout}
+                    >
+                        Salir
+                    </button> */}
                 
-                    <Link to="/"
+                    <Link to="/Login"
                         style={{color: "White"}}
                         className="p-2"
                     >
@@ -82,7 +103,7 @@ const NavBar = () =>{
                     </Link>
                 
                 
-                    <Link to="/"
+                    <Link to="/Register"
                     style={{color: "White"}}
                     className="p-2"
                     >
