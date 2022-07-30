@@ -1,5 +1,8 @@
-import React,{ createContext, useState} from "react";
+import React,{ createContext, useState, useEffect} from "react";
 import {Button, CardImg, Row,  Col, Card, CardHeader, CardText, CardBody, CardSubtitle, CardTitle, CardFooter} from "reactstrap";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
+import {auth} from "../utils/FirebaseConfig";
+
 
 
 const CartContext = createContext();
@@ -7,6 +10,8 @@ const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
 
   
+  const [user,setUser]=useState(null);
+  const [loading, setLoading]=useState(true);
 
   const [cartList, setCartList] = useState([]);
   
@@ -143,6 +148,27 @@ const renderCartlist= () =>{
 
 }
 
+//funcion para registrar en la base de datos
+  const signup = (email, password) =>{ createUserWithEmailAndPassword(auth,email,password)
+    
+  };
+
+//funcion para acceder a usuario de la base de datos
+  const login= (email, password) => {signInWithEmailAndPassword(auth,email,password)};
+
+//funcion para desconectar el usuario
+const logout = () => signOut(auth);
+
+useEffect(()=>{
+const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+  setUser(currentUser);
+  setLoading(false);
+});
+return ()=>unsubscribe();
+},[])
+
+
+
   return (
 
 
@@ -157,7 +183,12 @@ const renderCartlist= () =>{
         calcItemsQty,
         calcTotal,
         calcTaxes,
-        renderCartlist
+        renderCartlist,
+        signup,
+        login,
+        logout,
+        user,
+        loading
         }}>
 
       {children}
