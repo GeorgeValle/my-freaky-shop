@@ -27,7 +27,7 @@ const ItemDetailContainer=()=>{
 
         {loader
             ?<Spinner color="secondary"></Spinner>
-            :<ItemDetail product={product}/>}
+            :<ItemDetail  product={product}/>}
         </>
     );
 }

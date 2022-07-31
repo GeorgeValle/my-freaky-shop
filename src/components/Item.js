@@ -9,13 +9,14 @@ const Item = ({product}) => {
 
     return (
     <>
-    <div>
+    <div className="mx-auto">
     <Card
         body
         color="dark"
         inverse
+        className="text-center m-2">
         
-    >
+    
     
         <CardImg
             alt={title}

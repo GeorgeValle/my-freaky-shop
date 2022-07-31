@@ -1,8 +1,8 @@
-import{useState} from "react";
-
+import {useState} from "react";
 import {CartContext} from "../context/CartContext";
 import {useContext} from "react"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
+import {Form, FormGroup, Label, Input, Card, CardTitle, Button, CardSubtitle}from 'reactstrap';
 
 
 const Login= () =>{
@@ -33,27 +33,81 @@ const Login= () =>{
 return(
     <>
     <div> 
-    {error && <p>{error}</p>}
-
-    <form onSubmit={handleSubmit}>
-        <label htmlfor="email">Email</label>
-        <input
-            type="email"
-            name="email"
-            placeholder="tuEmail@company.ltd"
-            onChange={handleChange}
-        />
-
-        <label htmlfor="password">Password</label>
-        <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={handleChange}
-            placeholder="********"
-        />
-        <button>Login</button>
-    </form>
+        {error && <p>{error}</p>}
+        <div className="p-5">
+            <Card
+                    body
+                    color="dark"
+                    inverse
+                    style={{
+                        width: '23rem'
+                    }}
+                    className="mx-auto"
+            >
+                <CardTitle 
+                    tag="h5"
+                    className="text-center">
+                    Ingres&#225; tu usuario
+                </CardTitle>
+                <Form
+                    style={{
+                    width: '20rem'
+                        }}
+                    className="mx-auto p-3 "
+                    onSubmit={handleSubmit}
+                        >
+                    <FormGroup>
+                        <CardSubtitle
+                            className="m-3 text-muted text-danger"
+                            tag="h5"
+                        >
+                            {error && <p>{error}</p>}
+                        </CardSubtitle>
+                        <Label 
+                            for="email"
+                        >
+                            Email
+                        </Label>
+                        <Input
+                            bsSize="lg"
+                            id="email"
+                            name="email"
+                            placeholder="tuEmail@empresa.srl"
+                            type="email"
+                            onChange={handleChange}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label 
+                            for="password"
+                            className="text-color-white"
+                        >
+                            Password
+                        </Label>
+                        <Input
+                            type="password"
+                            name="password"
+                            id="password"
+                            onChange={handleChange}
+                            placeholder="********"
+                            bsSize="lg"
+                        />
+                    </FormGroup>
+                    <Button
+                        color="primary"           
+                    >
+                        Ingresar
+                    </Button>
+                    <CardSubtitle
+                        className="m-3 text-muted"
+                        tag="h5"
+                    >
+                        Si aún no se registró, <Link to="/Register">acceda aquí</Link>
+                    </CardSubtitle>
+                </Form>
+    
+            </Card>
+        </div>
     </div>
     </>
 )

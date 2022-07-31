@@ -28,7 +28,7 @@ const ItemDetail = ({product}) => {
     
     return (
         <>
-        
+<div className="mx-auto">       
 <Row>
     <Col sm="10" md="8" lg="6">
         <Card 
@@ -55,6 +55,7 @@ const ItemDetail = ({product}) => {
         body
         color="dark"
         inverse
+        
         >
         
             <CardHeader>
@@ -84,6 +85,7 @@ const ItemDetail = ({product}) => {
         </Card>
     </Col>
 </Row>
+</div>
         
         </>
     )
