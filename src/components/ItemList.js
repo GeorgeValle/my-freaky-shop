@@ -19,7 +19,7 @@ const ItemList = ({productList}) => {
                 Cat&#225;logo
             </CardTitle>
         </Card>
-        <CardGroup className="mx-auto">
+        <CardGroup>
             {productList.map((product) =><Item key={product.id} id={product.id} product={product}/>)};
         </CardGroup>    
         </>
