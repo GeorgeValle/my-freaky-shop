@@ -1,6 +1,6 @@
 import {Button,Card,CardHeader,CardFooter,CardBody,CardTitle,CardSubtitle,CardText} from 'reactstrap'
 import React, {CartContext} from "../context/CartContext";
-import {useContext} from "react"
+import {useContext/*,useState*/} from "react"
 import { serverTimestamp, setDoc, doc, collection, updateDoc, increment } from "firebase/firestore";
 import db from '../utils/FirebaseConfig';
 
@@ -9,10 +9,21 @@ import db from '../utils/FirebaseConfig';
 // la lógica para crear una orden en la DB
 const CartTotals =()=>{
 
+    //para manejar el alert
+    // const [alertOpen, setAlertOpen] = useState(false);
+    // const [nOrden, setNOrden] = useState("");
+
     const list = useContext(CartContext);
     const { cartList } = useContext(CartContext);
     
-
+    // const renderAlert= (nOrder) =>{
+    //     return<>
+    //     <div className="bg-success text-light mt-2 mb-2">
+    //                     {`Tu ID de la Orden es: ${nOrder}`}
+    //             </div>
+    //             <Button onClick={list.clear()} className="btn mt-2 mb-2 btn-success">Aceptar</Button>
+    //             </>
+    // }
 
 
     const createOrder= ()=>{
@@ -45,6 +56,7 @@ const CartTotals =()=>{
 
         createOrderInFirestore()
         .then(result=>alert("Your ID Order is: " + result.id))
+        // .then(result=>setNOrden(result.id),setAlertOpen(true))
         .catch(err => console.log(err));
 
         cartList.forEach(async item=>{
@@ -54,7 +66,11 @@ const CartTotals =()=>{
             })
         });
         
-        list.clear();
+        list.clear()
+        // setTimeout(() =>{
+        //     list.clear()
+        // },4000)
+        
 
     }
 
@@ -95,6 +111,9 @@ return (
         <CardText>
         TOTAL Ars: ${list.calcTotal().toFixed(2)}
         </CardText>
+        {/* {
+            alertOpen&&renderAlert(nOrden)
+        } */}
         <Button onClick={createOrder} color="danger" outline>¡Checkout Ahora!</Button>
         </CardFooter>
     </Card>

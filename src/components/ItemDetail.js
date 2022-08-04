@@ -10,15 +10,26 @@ const ItemDetail = ({product}) => {
 
     const {id,img,price,title,description,stock}=product;
 
+    //para agregar pductos al carro
     const { addItem } = useContext(CartContext); 
+
+    //para manejar el alert
+    const [alertOpen, setAlertOpen] = useState(false);
 
     const [itemCount, setItemCount] =useState(0);
 
     
     //función para sumar productos al carrito
     const onAdd = (qty) => {
+
+
+
         
-        alert(`cargó ${qty} productos`);
+        // alert(`cargó ${qty} productos`);
+        setAlertOpen(true);
+        setTimeout(() =>{
+            setAlertOpen(false)
+        },3000);
         addItem({id,img,price,title,qty});
         setItemCount(qty);
 
@@ -75,6 +86,17 @@ const ItemDetail = ({product}) => {
                 </CardText>
             </CardBody>
             <CardFooter>
+                {
+                
+                alertOpen===false?<div>
+                    {` `}
+                </div>    
+                :<div className="bg-success text-light mb-2">
+                        {`Has sumado ${itemCount} productos al carrito`}
+                </div>
+
+                }
+
                 {
                 itemCount===0
                 ?<ItemCount stock={stock} initial={itemCount}  onAdd={onAdd}/>
