@@ -4,13 +4,27 @@ import {useContext} from "react"
 import {Button,Card,CardTitle} from "reactstrap"
 import { Link } from 'react-router-dom';
 import CartTotals from "./CartTotals";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
 const Cart = () => {
 
     const list = useContext(CartContext);
+
+
     
+    const notify = (nOrden) =>{ toast.success(`Tu ID de la Orden es: ${nOrden}
+                                se envió un email con los detalles `,{id: 'clipboard',duration: 8000,});}
+    
+    // const renderAlert= (Orden) =>{
+    //     return<>
+    //     <div className="bg-success text-light m-2">
+    //                     {`Tu ID de la Orden es: ${Orden}`}
+    //             </div>
+    //             <Button onClick={list.setAlertOpen(false)} className="mt-2 mb-2 btn-success">Aceptar</Button>
+    //             </>
+    // }
     
 
 
@@ -43,7 +57,16 @@ const Cart = () => {
                 
                     
         }
-
+        
+        {
+            list.alertOpen===true&&  notify(list.nOrden) 
+            
+        }
+            <><Toaster 
+            
+            position="top-center"
+            reverseOrder={false}
+        /> </>
         {
             list.cartList.length > 0 && <CartTotals></CartTotals>
         }

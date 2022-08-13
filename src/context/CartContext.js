@@ -14,8 +14,20 @@ const CartContextProvider = ({ children }) => {
   const [loading, setLoading]=useState(true);
   const [status , setStatus]=useState(false);
   const [cartList, setCartList] = useState([]);
+
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [nOrden, setNOrden] = useState("");
   
 
+
+  // const renderAlert= (Orden) =>{
+  //   return<>
+  //   <div className="bg-success text-light m-2">
+  //                   {`Tu ID de la Orden es: ${Orden}`}
+  //           </div>
+  //           <Button onClick={setAlertOpen(false)} className="mt-2 mb-2 btn-success">Aceptar</Button>
+  //           </>
+  // }
 
 const addItem =  ({id, img, price, title, qty}) =>{
         
@@ -148,6 +160,8 @@ const renderCartlist= () =>{
 
 }
 
+
+
 //funcion para registrar en la base de datos
   const signup = (email, password) =>{ createUserWithEmailAndPassword(auth,email,password)
     
@@ -190,7 +204,12 @@ return ()=>unsubscribe();
         user,
         loading,
         status,
-        setStatus
+        setStatus,
+        
+        setNOrden,
+        setAlertOpen,
+        nOrden,
+        alertOpen
         }}>
 
       {children}

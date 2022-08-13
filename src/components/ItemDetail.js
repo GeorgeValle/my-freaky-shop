@@ -12,9 +12,11 @@ const ItemDetail = ({product}) => {
 
     //para agregar pductos al carro
     const { addItem } = useContext(CartContext); 
+    const {setAlertOpen} = useContext(CartContext);
+    const {setNOrden} = useContext(CartContext);
 
     //para manejar el alert
-    const [alertOpen, setAlertOpen] = useState(false);
+    const [notifyOpen, setNotifyOpen] = useState(false);
 
     const [itemCount, setItemCount] =useState(0);
 
@@ -26,9 +28,11 @@ const ItemDetail = ({product}) => {
 
         
         // alert(`cargó ${qty} productos`);
-        setAlertOpen(true);
+        setNotifyOpen(true);
+        setAlertOpen(false);
+        setNOrden("");
         setTimeout(() =>{
-            setAlertOpen(false)
+            setNotifyOpen(false)
         },3000);
         addItem({id,img,price,title,qty});
         setItemCount(qty);
@@ -88,10 +92,10 @@ const ItemDetail = ({product}) => {
             <CardFooter>
                 {
                 
-                alertOpen===false?<div>
+                notifyOpen===false?<div>
                     {` `}
                 </div>    
-                :<div className="bg-success text-light mb-2">
+                :<div className="bg-success text-light px-2 mb-2">
                         {`Has sumado ${itemCount} productos al carrito`}
                 </div>
 

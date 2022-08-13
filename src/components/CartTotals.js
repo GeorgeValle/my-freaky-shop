@@ -3,6 +3,8 @@ import React, {CartContext} from "../context/CartContext";
 import {useContext/*,useState*/} from "react"
 import { serverTimestamp, setDoc, doc, collection, updateDoc, increment } from "firebase/firestore";
 import db from '../utils/FirebaseConfig';
+import {useNavigate} from "react-router-dom";
+// import toast, { Toaster } from 'react-hot-toast';
 
 
 //muestra el resumen de compra y contiene 
@@ -12,7 +14,7 @@ const CartTotals =()=>{
     //para manejar el alert
     // const [alertOpen, setAlertOpen] = useState(false);
     // const [nOrden, setNOrden] = useState("");
-
+    const navigate = useNavigate();
     const list = useContext(CartContext);
     const { cartList } = useContext(CartContext);
     
@@ -25,9 +27,15 @@ const CartTotals =()=>{
     //             </>
     // }
 
+    // const notify = (nOrden) => toast(`Tu ID de la Orden es: ${nOrden}`);
+
 
     const createOrder= ()=>{
         
+        
+        if(list.user===null){
+            navigate("/Login");
+        }else{
         //array que se crea para dejar listo los items para la orden
         const itemsForDB= cartList.map(item=>({
             id:item.id,
@@ -55,8 +63,9 @@ const CartTotals =()=>{
         }
 
         createOrderInFirestore()
-        .then(result=>alert("Your ID Order is: " + result.id))
-        // .then(result=>setNOrden(result.id),setAlertOpen(true))
+        //.then(result=>alert("Your ID Order is: " + result.id))
+        .then(result=>list.setNOrden(result.id),list.setAlertOpen(true))
+        //.then(result=>notify(result.id))
         .catch(err => console.log(err));
 
         cartList.forEach(async item=>{
@@ -66,10 +75,14 @@ const CartTotals =()=>{
             })
         });
         
-        list.clear()
+        
+        list.clear();
+
+        }
+        
         // setTimeout(() =>{
-        //     list.clear()
-        // },4000)
+        //     list.setAlertOpen(false)
+        // },4100)
         
 
     }
@@ -111,6 +124,7 @@ return (
         <CardText>
         TOTAL Ars: ${list.calcTotal().toFixed(2)}
         </CardText>
+        
         {/* {
             alertOpen&&renderAlert(nOrden)
         } */}
