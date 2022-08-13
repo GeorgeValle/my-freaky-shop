@@ -9,20 +9,24 @@ const Login= () =>{
     const [user, setUser]= useState({email: "", password: "",});
 
     const { login } = useContext(CartContext);
+    const access = useContext(CartContext);
     
     const navigate = useNavigate();
     const [error, setError] = useState();
 
     const handleChange= ({ target:{name,value}})=> setUser({...user, [name]: value});
 
-    const handleSubmit =async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
         try{
             await login(user.email, user.password);
+            access.setStatus(true);
             navigate("/");
+            
         }catch (er){
-            setError(er.massage);
+            setError(er.message);
+            access.setStatus(false);
         }
 
         
@@ -33,7 +37,7 @@ const Login= () =>{
 return(
     <>
     <div> 
-        {error && <p>{error}</p>}
+        
         <div className="p-5">
             <Card
                     body
@@ -59,9 +63,9 @@ return(
                     <FormGroup>
                         <CardSubtitle
                             className="m-3 text-muted text-danger"
-                            tag="h5"
+                            // tag="h5"
                         >
-                            {error && <p>{error}</p>}
+                            {error && <p className="text-danger">{error}</p>}
                         </CardSubtitle>
                         <Label 
                             for="email"

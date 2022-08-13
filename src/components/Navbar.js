@@ -9,14 +9,20 @@ import {useNavigate} from "react-router-dom";
 
 const NavBar = () =>{
     const navigate= useNavigate();
-    const {user, logout, loading}= useContext(CartContext);
+    const { logout, loading}= useContext(CartContext);
+    const access = useContext(CartContext);
 
     const handleLogout = async () =>{
         await logout();
+        access.setStatus(false);
         navigate('/');
+        
+        
+
     }
 
-    if(loading) return <h1>loading</h1>
+    if(loading) return <h1 className="bg-dark text-light">Entrando al portal</h1>
+    
 
     return(
         <>
@@ -82,13 +88,18 @@ const NavBar = () =>{
             
             <NavItem>
 
-
-                    {/* <button
+                {
+                    access.status===true&&(<>
+                    <Button
                         onClick={handleLogout}
+                        className="mx-2 btn-danger"
                     >
                         Salir
-                    </button> */}
-                
+                    </Button>
+                    </>)
+}
+{
+                    access.status===false&&(<>
                     <Link to="/Login"
                         style={{color: "White"}}
                         className="p-2"
@@ -101,8 +112,6 @@ const NavBar = () =>{
                         Ingresar
                     </Button>
                     </Link>
-                
-                
                     <Link to="/Register"
                     style={{color: "White"}}
                     className="p-2"
@@ -114,7 +123,8 @@ const NavBar = () =>{
                         Registrarse
                     </Button>
                     </Link>
-                    
+                    </>)
+                }
             </NavItem>
             
         </Nav>

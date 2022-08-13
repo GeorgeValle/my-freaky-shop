@@ -12,10 +12,22 @@ const CartContextProvider = ({ children }) => {
   
   const [user,setUser]=useState(null);
   const [loading, setLoading]=useState(true);
-
+  const [status , setStatus]=useState(false);
   const [cartList, setCartList] = useState([]);
+
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [nOrden, setNOrden] = useState("");
   
 
+
+  // const renderAlert= (Orden) =>{
+  //   return<>
+  //   <div className="bg-success text-light m-2">
+  //                   {`Tu ID de la Orden es: ${Orden}`}
+  //           </div>
+  //           <Button onClick={setAlertOpen(false)} className="mt-2 mb-2 btn-success">Aceptar</Button>
+  //           </>
+  // }
 
 const addItem =  ({id, img, price, title, qty}) =>{
         
@@ -148,19 +160,21 @@ const renderCartlist= () =>{
 
 }
 
+
+
 //funcion para registrar en la base de datos
   const signup = (email, password) =>{ createUserWithEmailAndPassword(auth,email,password)
     
   };
 
 //funcion para acceder a usuario de la base de datos
-  const login= (email, password) => {signInWithEmailAndPassword(auth,email,password)};
+  const login= (email, password) =>signInWithEmailAndPassword(auth,email,password);
 
 //funcion para desconectar el usuario
 const logout = () => signOut(auth);
 
 useEffect(()=>{
-const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+const unsubscribe = onAuthStateChanged(auth, currentUser=>{
   setUser(currentUser);
   setLoading(false);
 });
@@ -188,7 +202,14 @@ return ()=>unsubscribe();
         login,
         logout,
         user,
-        loading
+        loading,
+        status,
+        setStatus,
+        
+        setNOrden,
+        setAlertOpen,
+        nOrden,
+        alertOpen
         }}>
 
       {children}
