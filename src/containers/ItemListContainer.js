@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import ItemList from '../components/ItemList'
-import { Spinner } from 'reactstrap';
+import ItemList from '../components/ItemList';
+// import { Spinner } from 'reactstrap';
 import {useParams} from 'react-router-dom';
-import {FirestoreFetch} from '../utils/FireStoreFetch'
+import {FirestoreFetch} from '../utils/FireStoreFetch';
+import Portal from '../components/Portal';
 
 
 const ItemListContainer=()=>{
@@ -33,7 +34,8 @@ const ItemListContainer=()=>{
         
 
         {loader
-            ?<Spinner color="secondary"></Spinner>
+            // ?<Spinner color="secondary"></Spinner>
+            ?<Portal className="Portal"></Portal>
             :<ItemList productList={productList}/>}
         </>
     );
