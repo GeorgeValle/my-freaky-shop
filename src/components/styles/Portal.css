@@ -1,51 +1,9 @@
-#portal{
-	margin:auto;
-	margin-top:200px;
-	width:1px;
-	height:1px;
-	/* border */
-	border:1px solid white;
-	border-radius: 50%;
-	/* sombra */
-	box-shadow: 0px 0px 100px 40px
-	rgba(255,208,0,0.767);
-	
-	
-	/* para que rote */
-	animation: rotate 1s
-	linear infinite;
-	
-	
-}
 
-
-.chispa{
-	position:absolute;
-	width: 1px;
-	height: 100px;
-	background:
-	linear-gradient(orange, black);
-	/* pivot desde top */
-	margin: auto;
-	transform-origin: top left;
-	
-	/* anomacion keyframe */
-		animation:resizer
-			1s ease-in-out infinite;
-}
-
-
-@keyframes resizer {
-    0% {height: 100px;}
-    50% {height: 150px;}
-    100% {height:100px}
-    
-    }
-    
-    @keyframes rotate{
-    
-        to{
-            transform:rotate(360deg);
-        }
-    }
-    
+	.portal{
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0, 0, 0, 9);
+	}
