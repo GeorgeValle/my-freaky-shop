@@ -16,6 +16,7 @@ const CartWidget = () =>{
             <Link to="/Cart">
             <Button 
                 color="secondary"
+                className="mx-2"
             >   
                 <BsFillCartFill style={{color: 'white', fontSize: '24px'}} />
                 <Badge color="danger" pill >{list.calcItemsQty()}</Badge>

@@ -1,6 +1,7 @@
 # My Freaky Shop
 
-![App Screenshot](https://res.cloudinary.com/georgevalle/image/upload/v1657077569/freaky-shop/mini_gif_final_myfreakyshop_fuli5u.gif)
+<img src="https://res.cloudinary.com/georgevalle/image/upload/v1657077569/freaky-shop/mini_gif_final_myfreakyshop_fuli5u.gif" align="left"/>
+
 
 ## `Introducción`
 
@@ -32,11 +33,11 @@ Me decidí por elegir esta tématica para el Ecommerce, porque es un tema muy co
 
 - El componente ItemCount se utilizó iconos de + -, el badge con la cantidad total de stock, con la caracteristica que evita que pueda agregar al carrito más cantidad de prodicto del total de stock, ní tampoco descontar más allá del cero. Está caracteritica es señalada cuando el botón azul se tiñe de gris.
 
-- Gracias a la librería Reactrap se pudo colocar un loader para ocupar el lugar de la frase "Cargando..." configurado para que un hook de estado marque el momento en el cual aparece y desaparece.
+- Se colocó un loader con unn gif de un portal, para ocupar el lugar de la frase "Cargando..." configurado para que un hook de estado marque el momento en el cual aparece y desaparece.
 
-- El componente CartWidget del Navbar, está creado dentro de un botón el cual será roteado a la zona del carrito de compras.
+- El componente CartWidget del Navbar, está creado dentro de un botón el cual será routeado a la zona del carrito de compras.
 
-- Se utilizó como backend la base de dato provista por Firebase que permite crear las distintas colecciones tanto de productos como historial de compras.
+- Se utilizó como backend la base de datos provista por Firebase que permite crear las distintas colecciones tanto de productos como historial de compras.
 
 - El randerizado de los productos del Carrito, se realizó a traves de una función exportada desde el contexto CartContext debido a ciertos errores que aparecian al ejecutar.
 
@@ -44,7 +45,9 @@ Me decidí por elegir esta tématica para el Ecommerce, porque es un tema muy co
 
 - Se decidió usar como una exportación el componente NavBar debido a un conflicto de nombres.
 
-- Se crearon dos gif con la grabacion del sitio, uno intermedio y otro final, donde se muestra el funcionamiento de la app, en encuentran wn la raiz del proyecto.
+- Se crearon dos gif con la grabacion del sitio, uno intermedio y otro final, donde se muestra el funcionamiento de la app, se encuentran en la raiz del proyecto.
+
+- Se agregó ingreso y registro de los usuarios. estos se guardan en la base de datos de firestore.
 
 - El despliegue está hecho en Vercell por una cuestion de rapida actualizacion de cambios a través del repositorio.
 
@@ -116,7 +119,7 @@ Para crear la producción en la carpeta `build` .\
 esta obtendrá el código minificado para tener una mejor performance y poder cargarlo en un servidor.
 ```
 
--Para visualizar el resultado final puedes entrar al siguiente link:_
+- Para visualizar el resultado final puedes entrar al siguiente link:_
 
 https://vercel.com/georgevalle/my-freaky-shop/D4TG5qymGqrnbJwKdyzQ382DHvUt
 
